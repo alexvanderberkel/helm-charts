@@ -31,32 +31,14 @@ To uninstall a chart release use `helm`'s delete command:
 ```sh
 helm delete <chart>
 ```
-
 ## Charts
 
-- [`clickhouse`](https://charts.pascaliske.dev/charts/clickhouse/)
-- [`cloudflare-dyndns`](https://charts.pascaliske.dev/charts/cloudflare-dyndns/)
-- [`cloudflared`](https://charts.pascaliske.dev/charts/cloudflared)
-- [`code-server`](https://charts.pascaliske.dev/charts/code-server)
-- [`ctfd`](https://charts.pascaliske.dev/charts/ctfd)
-- [`digitalocean-dyndns`](https://charts.pascaliske.dev/charts/digitalocean-dyndns)
-- [`fritzbox-exporter`](https://charts.pascaliske.dev/charts/fritzbox-exporter)
-- [`gitlab`](https://charts.pascaliske.dev/charts/gitlab)
-- [`hammond`](https://charts.pascaliske.dev/charts/hammond)
-- [`homer`](https://charts.pascaliske.dev/charts/homer)
-- [`keycloak`](https://charts.pascaliske.dev/charts/keycloak)
-- [`linkding`](https://charts.pascaliske.dev/charts/linkding)
-- [`pairdrop`](https://charts.pascaliske.dev/charts/pairdrop)
-- [`paperless`](https://charts.pascaliske.dev/charts/paperless)
-- [`plausible`](https://charts.pascaliske.dev/charts/plausible)
-- [`plausible-exporter`](https://charts.pascaliske.dev/charts/plausible-exporter)
-- [`redis`](https://charts.pascaliske.dev/charts/redis)
-- [`traefik-errors`](https://charts.pascaliske.dev/charts/traefik-errors)
-- [`unbound`](https://charts.pascaliske.dev/charts/unbound)
-- [`uptime-kuma`](https://charts.pascaliske.dev/charts/uptime-kuma)
-- [`vaultwarden`](https://charts.pascaliske.dev/charts/vaultwarden)
-- [`vikunja`](https://charts.pascaliske.dev/charts/vikunja)
-
+- [`fritzbox-exporter`](https://charts.esseling.photos/charts/fritzbox-exporter)
+- [`linkding`](https://charts.esseling.photos/charts/linkding)
+- [`paperless`](https://charts.esseling.photos/charts/paperless)
+- [`redis`](https://charts.esseling.photos/charts/redis)
+- [`vaultwarden`](https://charts.esseling.photos/charts/vaultwarden)
+- [`vikunja`](https://charts.esseling.photos/charts/vikunja)
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
