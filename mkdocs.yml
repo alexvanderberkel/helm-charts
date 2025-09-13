@@ -47,36 +47,14 @@ theme:
 nav:
   - Introduction: index.md
   - Charts:
-      - fritzbox-exporter: charts/fritzbox-exporter.md
       - paperless: charts/paperless.md
       - redis: charts/redis.md
-      - vaultwarden: charts/vaultwarden.md
-      - vikunja: charts/vikunja.md
 
 # socials
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/alexvanderberkel
-  analytics:
-    provider: plausible
-    domain: charts.esseling.photos
-    src: https://analytics.esseling.photos/js/script.outbound-links.js
-    feedback:
-      title: Was this page helpful?
-      ratings:
-        - icon: material/emoticon-happy-outline
-          name: This page was helpful
-          data: happy
-          note: >-
-            Thanks for your feedback!
-
-        - icon: material/emoticon-sad-outline
-          name: This page could be improved
-          data: sad
-          note: >-
-            Thanks for your feedback! Help me improve this page by
-            opening a <a href="https://github.com/alexvanderberkel/helm-charts/issues/new" target="_blank" rel="noopener">issue on GitHub</a>.
+      link: https://github.com/alexvanderberkel  
 
 # customizations
 extra_css:
