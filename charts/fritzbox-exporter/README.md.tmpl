@@ -17,7 +17,7 @@
 To use this chart add the repo as follows:
 
 ```sh
-helm repo add pascaliske https://charts.pascaliske.dev
+helm repo add alexvanderberkel https://charts.esseling.photos
 ```
 
 If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
@@ -25,7 +25,7 @@ If you had already added this repo earlier, run `helm repo update` to retrieve t
 To install this chart simply run the following command:
 
 ```sh
-helm install {{ template "chart.name" . }} pascaliske/{{ template "chart.name" . }}
+helm install {{ template "chart.name" . }} alexvanderberkel/{{ template "chart.name" . }}
 ```
 
 To uninstall this chart simply run the following command:
@@ -44,4 +44,4 @@ The following values can be used to adjust the helm chart.
 
 ## License
 
-[MIT](../LICENSE.md) – © {{ now | date "2006" }} [Pascal Iske](https://pascaliske.dev)
+[MIT](../LICENSE.md) – © {{ now | date "2006" }} [Alex Esseling](https://esseling.photos)

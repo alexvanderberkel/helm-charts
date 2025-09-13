@@ -1,10 +1,10 @@
-# [`fritzbox-exporter`](https://charts.pascaliske.dev/charts/fritzbox-exporter/)
+# [`fritzbox-exporter`](https://charts.alexvanderberkel.dev/charts/fritzbox-exporter/)
 
 > A Helm chart for fritzbox-exporter
 
-[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/fritzbox-exporter/)[![Version: 2.0.3](https://img.shields.io/badge/Version-2.0.3-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/fritzbox-exporter/)[![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/fritzbox-exporter/)
+[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ](https://charts.esseling.photos/charts/fritzbox-exporter/)[![Version: 2.0.3](https://img.shields.io/badge/Version-2.0.3-informational?style=flat-square) ](https://charts.esseling.photos/charts/fritzbox-exporter/)[![AppVersion: 1.0](https://img.shields.io/badge/AppVersion-1.0-informational?style=flat-square) ](https://charts.esseling.photos.dev/charts/fritzbox-exporter/)
 
-* <https://github.com/pascaliske/helm-charts>
+* <https://github.com/alexvanderberkel/helm-charts>
 * <https://git.r3ktm8.de/SeaLife-Docker/fritzbox_exporter>
 
 ## Requirements
@@ -16,7 +16,7 @@
 To use this chart add the repo as follows:
 
 ```sh
-helm repo add pascaliske https://charts.pascaliske.dev
+helm repo add alexvanderberkel https://charts.esseling.photos
 ```
 
 If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
@@ -24,7 +24,7 @@ If you had already added this repo earlier, run `helm repo update` to retrieve t
 To install this chart simply run the following command:
 
 ```sh
-helm install fritzbox-exporter pascaliske/fritzbox-exporter
+helm install fritzbox-exporter alexvanderberkel/fritzbox-exporter
 ```
 
 To uninstall this chart simply run the following command:
@@ -69,8 +69,8 @@ The following values can be used to adjust the helm chart.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| pascaliske | <info@pascaliske.dev> | <https://pascaliske.dev> |
+| alexvanderberkel | <alex@alex-esseling.de> | <https://esseling.photos> |
 
 ## License
 
-[MIT](../LICENSE.md) – © 2023 [Pascal Iske](https://pascaliske.dev)
+[MIT](../LICENSE.md) – © 2025 Alex Esseling](https://esseling.photos)

@@ -7,9 +7,9 @@ version: 2.0.3
 # renovate: image=sealife/fritzbox-exporter
 appVersion: "1.0"
 
-home: https://charts.pascaliske.dev/charts/fritzbox-exporter/
+home: https://charts.alexvanderberkel.dev/charts/fritzbox-exporter/
 sources:
-  - https://github.com/pascaliske/helm-charts
+  - https://github.com/alexvanderberkel/helm-charts
   - https://git.r3ktm8.de/SeaLife-Docker/fritzbox_exporter
 keywords:
   - fritzbox-exporter
@@ -17,14 +17,14 @@ keywords:
   - prometheus
   - metrics
 maintainers:
-  - name: pascaliske
-    email: info@pascaliske.dev
-    url: https://pascaliske.dev
+  - name: alexvanderberkel
+    email: alex@alex-esseling.de
+    url: https://esseling.photos
 
 dependencies:
   - name: base
     version: 1.2.0
-    repository: https://charts.pascaliske.dev
+    repository: https://charts.esseling.photos
 
 annotations:
   # possible kinds: added, changed, deprecated, removed, fixed, security
