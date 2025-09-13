@@ -39,6 +39,7 @@ helm delete <chart>
 - [`redis`](https://charts.esseling.photos/charts/redis)
 - [`vaultwarden`](https://charts.esseling.photos/charts/vaultwarden)
 - [`vikunja`](https://charts.esseling.photos/charts/vikunja)
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
