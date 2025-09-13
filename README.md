@@ -33,12 +33,8 @@ helm delete <chart>
 ```
 ## Charts
 
-- [`fritzbox-exporter`](https://charts.esseling.photos/charts/fritzbox-exporter)
-- [`linkding`](https://charts.esseling.photos/charts/linkding)
 - [`paperless`](https://charts.esseling.photos/charts/paperless)
 - [`redis`](https://charts.esseling.photos/charts/redis)
-- [`vaultwarden`](https://charts.esseling.photos/charts/vaultwarden)
-- [`vikunja`](https://charts.esseling.photos/charts/vikunja)
 
 ## Contributors
 
