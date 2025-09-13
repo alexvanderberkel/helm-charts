@@ -49,6 +49,7 @@ nav:
   - Charts:
       - paperless: charts/paperless.md
       - redis: charts/redis.md
+      - fritzbox-exporter: charts/fritzbox-exporter.md
 
 # socials
 extra:
