@@ -12,7 +12,7 @@
 
 ## Usage
 
-**Note:** This chart is a library chart which can not be used directly!
+**Note:** This chart is a library chart which can not be used directly.
 
 ## Values
 
