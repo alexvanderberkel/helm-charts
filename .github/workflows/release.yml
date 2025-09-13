@@ -39,6 +39,18 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
+      # add helm repositories and update dependencies
+      - name: Add Helm repositories and update dependencies
+        run: |
+          for dir in charts/*/; do
+            if [[ -f "$dir/Chart.yaml" ]]; then
+              echo "Processing chart in $dir"
+              if [[ -f "$dir/Chart.lock" ]]; then
+                helm dependency update "$dir"
+              fi
+            fi
+          done
+
       # deploy charts to github pages
       - uses: helm/chart-releaser-action@v1.7.0
         id: cr
