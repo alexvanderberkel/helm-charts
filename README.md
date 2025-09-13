@@ -35,6 +35,7 @@ helm delete <chart>
 
 - [`paperless`](https://charts.esseling.photos/charts/paperless)
 - [`redis`](https://charts.esseling.photos/charts/redis)
+- ['fritzbox-exporter'](https://charts.esseling.photos/charts/fritzbox-exporter)
 
 ## Contributors
 
