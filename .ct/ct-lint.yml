@@ -2,4 +2,4 @@ remote: origin
 target-branch: main
 # helm-extra-args: --timeout 600s
 chart-repos:
-  - pascaliske=https://charts.pascaliske.dev
+  - alexvanderberkel=https://charts.esseling.photos

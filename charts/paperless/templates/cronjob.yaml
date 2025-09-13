@@ -31,7 +31,7 @@ spec:
           restartPolicy: Never
           containers:
             - name: {{ printf "%s-export" (include "paperless.fullname" . ) }}
-              image: ghcr.io/pascaliske/alpine-kubectl:latest
+              image: ghcr.io/alexvanderberkel/alpine-kubectl:latest
               imagePullPolicy: Always
               command: ["/bin/sh"]
               args: ["-c", "{{ include "paperless.export.command" . }}"]

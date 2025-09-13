@@ -1,7 +1,7 @@
 {
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectOwner": "pascaliske",
+  "projectOwner": "alexvanderberkel",
   "projectName": "helm-charts",
   "files": [
     "README.md"

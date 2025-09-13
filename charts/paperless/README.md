@@ -1,10 +1,10 @@
-# [`paperless`](https://charts.pascaliske.dev/charts/paperless/)
+# [`paperless`](https://charts.esseling.photos/charts/paperless/)
 
 > A Helm chart for paperless-ngx
 
-[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/paperless/)[![Version: 5.2.0](https://img.shields.io/badge/Version-5.2.0-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/paperless/)[![AppVersion: 2.17.1](https://img.shields.io/badge/AppVersion-2.17.1-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/paperless/)
+[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ](https://charts.esseling.photos/charts/paperless/)[![Version: 5.2.0](https://img.shields.io/badge/Version-5.2.0-informational?style=flat-square) ](https://charts.esseling.photos/charts/paperless/)[![AppVersion: 2.17.1](https://img.shields.io/badge/AppVersion-2.17.1-informational?style=flat-square) ](https://charts.esseling.photos/charts/paperless/)
 
-* <https://github.com/pascaliske/helm-charts>
+* <https://github.com/alexvanderberkel/helm-charts>
 * <https://github.com/paperless-ngx/paperless-ngx>
 
 ## Requirements
@@ -16,7 +16,7 @@
 To use this chart add the repo as follows:
 
 ```sh
-helm repo add pascaliske https://charts.pascaliske.dev
+helm repo add alexvanderberkel https://charts.esseling.photos
 ```
 
 If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
@@ -24,7 +24,7 @@ If you had already added this repo earlier, run `helm repo update` to retrieve t
 To install this chart simply run the following command:
 
 ```sh
-helm install paperless pascaliske/paperless
+helm install paperless alexvanderberkel/paperless
 ```
 
 To uninstall this chart simply run the following command:
@@ -113,7 +113,7 @@ The following values can be used to adjust the helm chart.
 | rbac.annotations | object | `{}` | Additional annotations for the role and role binding objects. |
 | rbac.create | bool | `true` | Create `Role` and `RoleBinding` objects. |
 | rbac.labels | object | `{}` | Additional labels for the role and role binding objects. |
-| redis | object | `{"enabled":false}` | Configure `redis` subchart under this key. More info [here](https://charts.pascaliske.dev/charts/redis/). |
+| redis | object | `{"enabled":false}` | Configure `redis` subchart under this key. More info [here](https://charts.esseling.photos/charts/redis/). |
 | redis.enabled | bool | `false` | Enable `redis` subchart. |
 | resources | object | `{}` | Compute resources used by the container. More info [here](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/). |
 | secret.annotations | object | `{}` | Additional annotations for the secret object. |
@@ -142,8 +142,8 @@ The following values can be used to adjust the helm chart.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| pascaliske | <info@pascaliske.dev> | <https://pascaliske.dev> |
+| alexvanderberkel | <info@esseling.photos> | <https://esseling.photos> |
 
 ## License
 
-[MIT](../LICENSE.md) – © 2025 [Pascal Iske](https://pascaliske.dev)
+[MIT](../LICENSE.md) – © 2025 [Alex Esseling](https://esseling.photos)

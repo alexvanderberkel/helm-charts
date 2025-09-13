@@ -6,15 +6,15 @@ description: A Helm chart for Kubernetes
 version: 1.2.0
 appVersion: ""
 
-home: https://charts.pascaliske.dev
+home: https://charts.esseling.photos
 sources:
-  - https://github.com/pascaliske/helm-charts
+  - https://github.com/alexvanderberkel/helm-charts
 keywords:
   - library-chart
 maintainers:
-  - name: pascaliske
-    email: info@pascaliske.dev
-    url: https://pascaliske.dev
+  - name: alexvanderberkel
+    email: alex@alex-esseling.de
+    url: https://charts.esseling.photos
 
 annotations:
   # possible kinds: added, changed, deprecated, removed, fixed, security

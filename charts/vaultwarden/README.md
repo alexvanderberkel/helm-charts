@@ -1,10 +1,10 @@
-# [`vaultwarden`](https://charts.pascaliske.dev/charts/vaultwarden/)
+# [`vaultwarden`](https://charts.esseling.photos/charts/vaultwarden/)
 
 > A Helm chart for Vaultwarden
 
-[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/vaultwarden/)[![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/vaultwarden/)[![AppVersion: 1.34.1](https://img.shields.io/badge/AppVersion-1.34.1-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/vaultwarden/)
+[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ](https://charts.esseling.photos/charts/vaultwarden/)[![Version: 1.3.0](https://img.shields.io/badge/Version-1.3.0-informational?style=flat-square) ](https://charts.esseling.photos/charts/vaultwarden/)[![AppVersion: 1.34.1](https://img.shields.io/badge/AppVersion-1.34.1-informational?style=flat-square) ](https://charts.esseling.photos/charts/vaultwarden/)
 
-* <https://github.com/pascaliske/helm-charts>
+* <https://github.com/alexvanderberkel/helm-charts>
 * <https://github.com/dani-garcia/vaultwarden>
 
 ## Requirements
@@ -16,7 +16,7 @@
 To use this chart add the repo as follows:
 
 ```sh
-helm repo add pascaliske https://charts.pascaliske.dev
+helm repo add alexvanderberkel https://charts.esseling.photos
 ```
 
 If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
@@ -24,7 +24,7 @@ If you had already added this repo earlier, run `helm repo update` to retrieve t
 To install this chart simply run the following command:
 
 ```sh
-helm install vaultwarden pascaliske/vaultwarden
+helm install vaultwarden alexvanderberkel/vaultwarden
 ```
 
 To uninstall this chart simply run the following command:
@@ -109,8 +109,8 @@ The following values can be used to adjust the helm chart.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| pascaliske | <info@pascaliske.dev> | <https://pascaliske.dev> |
+| alexvanderberkel | <info@esseling.photos> | <https://esseling.photos> |
 
 ## License
 
-[MIT](../LICENSE.md) – © 2025 [Pascal Iske](https://pascaliske.dev)
+[MIT](../LICENSE.md) – © 2025 [Alex Esseling](https://esseling.photos)

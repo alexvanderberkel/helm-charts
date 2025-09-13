@@ -7,9 +7,9 @@ version: 5.2.0
 # renovate: image=ghcr.io/paperless-ngx/paperless-ngx
 appVersion: "2.18.4"
 
-home: https://charts.pascaliske.dev/charts/paperless/
+home: https://charts.esseling.photos/charts/paperless/
 sources:
-  - https://github.com/pascaliske/helm-charts
+  - https://github.com/alexvanderberkel/helm-charts
   - https://github.com/paperless-ngx/paperless-ngx
 keywords:
   - paperless
@@ -17,17 +17,17 @@ keywords:
   - document-management-system
   - dms
 maintainers:
-  - name: pascaliske
-    email: info@pascaliske.dev
-    url: https://pascaliske.dev
+  - name: alexvanderberkel
+    email: alex@alex-esseling.de
+    url: https://esseling.photos
 
 dependencies:
   - name: base
     version: 1.2.0
-    repository: https://charts.pascaliske.dev
+    repository: https://charts.esseling.photos
   - name: redis
     version: 2.1.0
-    repository: https://charts.pascaliske.dev
+    repository: https://charts.esseling.photos
     condition: redis.enabled
 
 annotations:

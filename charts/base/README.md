@@ -1,10 +1,10 @@
-# [`base`](https://charts.pascaliske.dev)
+# [`base`](https://charts.esseling.photos)
 
 > A Helm chart for Kubernetes
 
-[![Type: library](https://img.shields.io/badge/Type-library-informational?style=flat-square) ](https://charts.pascaliske.dev)[![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ](https://charts.pascaliske.dev)
+[![Type: library](https://img.shields.io/badge/Type-library-informational?style=flat-square) ](https://charts.esseling.photos)[![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ](https://charts.esseling.photos)
 
-* <https://github.com/pascaliske/helm-charts>
+* <https://github.com/alexvanderberkel/helm-charts>
 
 ## Requirements
 
@@ -25,8 +25,8 @@ The following values can be used to adjust the helm chart.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| pascaliske | <info@pascaliske.dev> | <https://pascaliske.dev> |
+| alexvanderberkel | <alex@alex-esseling.de> | <https://esseling.photos> |
 
 ## License
 
-[MIT](../LICENSE.md) – © 2024 [Pascal Iske](https://pascaliske.dev)
+[MIT](../LICENSE.md) – © 2024 [Alex Esseling](https://esseling.photos)

@@ -7,23 +7,23 @@ version: 5.0.0
 # renovate: image=vikunja/vikunja
 appVersion: "0.24.6"
 
-home: https://charts.pascaliske.dev/charts/vikunja/
+home: https://charts.esseling.photos/charts/vikunja/
 sources:
-  - https://github.com/pascaliske/helm-charts
+  - https://github.com/alexvanderberkel/helm-charts
   - https://code.vikunja.io
   - https://vikunja.io
 keywords:
   - vikunja
   - todos
 maintainers:
-  - name: pascaliske
-    email: info@pascaliske.dev
-    url: https://pascaliske.dev
+  - name: alexvanderberkel
+    email: info@esseling.photos
+    url: https://esseling.photos
 
 dependencies:
   - name: base
     version: 1.2.0
-    repository: https://charts.pascaliske.dev
+    repository: https://charts.esseling.photos
 
 annotations:
   # possible kinds: added, changed, deprecated, removed, fixed, security

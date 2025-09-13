@@ -1,10 +1,10 @@
-# [`vikunja`](https://charts.pascaliske.dev/charts/vikunja/)
+# [`vikunja`](https://charts.esseling.photos/charts/vikunja/)
 
 > A Helm chart for Kubernetes
 
-[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/vikunja/)[![Version: 5.0.0](https://img.shields.io/badge/Version-5.0.0-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/vikunja/)[![AppVersion: 0.23.0](https://img.shields.io/badge/AppVersion-0.23.0-informational?style=flat-square) ](https://charts.pascaliske.dev/charts/vikunja/)
+[![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ](https://charts.esseling.photos/charts/vikunja/)[![Version: 5.0.0](https://img.shields.io/badge/Version-5.0.0-informational?style=flat-square) ](https://charts.esseling.photos/charts/vikunja/)[![AppVersion: 0.23.0](https://img.shields.io/badge/AppVersion-0.23.0-informational?style=flat-square) ](https://charts.esseling.photos/charts/vikunja/)
 
-* <https://github.com/pascaliske/helm-charts>
+* <https://github.com/alexvanderberkel/helm-charts>
 * <https://code.vikunja.io>
 * <https://vikunja.io>
 
@@ -17,7 +17,7 @@
 To use this chart add the repo as follows:
 
 ```sh
-helm repo add pascaliske https://charts.pascaliske.dev
+helm repo add alexvanderberkel https://charts.esseling.photos
 ```
 
 If you had already added this repo earlier, run `helm repo update` to retrieve the latest versions of the packages.
@@ -25,7 +25,7 @@ If you had already added this repo earlier, run `helm repo update` to retrieve t
 To install this chart simply run the following command:
 
 ```sh
-helm install vikunja pascaliske/vikunja
+helm install vikunja alexvanderberkel/vikunja
 ```
 
 To uninstall this chart simply run the following command:
@@ -97,8 +97,8 @@ The following values can be used to adjust the helm chart.
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| pascaliske | <info@pascaliske.dev> | <https://pascaliske.dev> |
+| alexvanderberkel | <info@esseling.photos> | <https://esseling.photos> |
 
 ## License
 
-[MIT](../LICENSE.md) – © 2024 [Pascal Iske](https://pascaliske.dev)
+[MIT](../LICENSE.md) – © 2024 [Alex Esseling](https://esseling.photos)

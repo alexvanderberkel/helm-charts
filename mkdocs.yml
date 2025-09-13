@@ -1,12 +1,12 @@
 # project
 site_name: Helm Charts
 site_description: Another repository with lightweight Helm Charts.
-site_author: Pascal Iske
-site_url: https://charts.pascaliske.dev
+site_author: Alex Esseling
+site_url: https://charts.esseling.photos
 
 # repository
-repo_name: pascaliske/helm-charts
-repo_url: https://github.com/pascaliske/helm-charts
+repo_name: alexvanderberkel/helm-charts
+repo_url: https://github.com/alexvanderberkel/helm-charts
 
 # theme
 theme:
@@ -47,26 +47,9 @@ theme:
 nav:
   - Introduction: index.md
   - Charts:
-      - clickhouse: charts/clickhouse.md
-      - cloudflare-dyndns: charts/cloudflare-dyndns.md
-      - cloudflared: charts/cloudflared.md
-      - code-server: charts/code-server.md
-      - ctfd: charts/ctfd.md
-      - digitalocean-dyndns: charts/digitalocean-dyndns.md
       - fritzbox-exporter: charts/fritzbox-exporter.md
-      - gitlab: charts/gitlab.md
-      - hammond: charts/hammond.md
-      - homer: charts/homer.md
-      - keycloak: charts/keycloak.md
-      - linkding: charts/linkding.md
-      - pairdrop: charts/pairdrop.md
       - paperless: charts/paperless.md
-      - plausible: charts/plausible.md
-      - plausible-exporter: charts/plausible-exporter.md
       - redis: charts/redis.md
-      - traefik-errors: charts/traefik-errors.md
-      - unbound: charts/unbound.md
-      - uptime-kuma: charts/uptime-kuma.md
       - vaultwarden: charts/vaultwarden.md
       - vikunja: charts/vikunja.md
 
@@ -74,17 +57,11 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/pascaliske
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/pascaliske
-    - icon: fontawesome/brands/mastodon
-      link: https://hachyderm.io/@pascaliske
-    - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/u/pascaliske
+      link: https://github.com/alexvanderberkel
   analytics:
     provider: plausible
-    domain: charts.pascaliske.dev
-    src: https://analytics.pascaliske.dev/js/script.outbound-links.js
+    domain: charts.esseling.photos
+    src: https://analytics.esseling.photos/js/script.outbound-links.js
     feedback:
       title: Was this page helpful?
       ratings:
@@ -99,7 +76,7 @@ extra:
           data: sad
           note: >-
             Thanks for your feedback! Help me improve this page by
-            opening a <a href="https://github.com/pascaliske/helm-charts/issues/new" target="_blank" rel="noopener">issue on GitHub</a>.
+            opening a <a href="https://github.com/alexvanderberkel/helm-charts/issues/new" target="_blank" rel="noopener">issue on GitHub</a>.
 
 # customizations
 extra_css:

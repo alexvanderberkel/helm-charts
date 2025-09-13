@@ -7,23 +7,23 @@ version: 2.1.0
 # renovate: image=redis
 appVersion: "8.0.3"
 
-home: https://charts.pascaliske.dev/charts/redis/
+home: https://charts.esseling.photos/charts/redis/
 sources:
-  - https://github.com/pascaliske/helm-charts
+  - https://github.com/alexvanderberkel/helm-charts
   - https://github.com/docker-library/redis
   - https://github.com/redis/redis
   - https://redis.io
 keywords:
   - redis
 maintainers:
-  - name: pascaliske
-    email: info@pascaliske.dev
-    url: https://pascaliske.dev
+  - name: alexvanderberkel
+    email: alex@alex-esseling.de
+    url: https://esseling.photos
 
 dependencies:
   - name: base
     version: 1.2.0
-    repository: https://charts.pascaliske.dev
+    repository: https://charts.esseling.photos
 
 annotations:
   # possible kinds: added, changed, deprecated, removed, fixed, security

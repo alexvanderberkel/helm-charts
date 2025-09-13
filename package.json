@@ -3,16 +3,16 @@
   "description": "",
   "license": "MIT",
   "author": {
-    "name": "Pascal Iske",
-    "email": "info@pascaliske.dev",
-    "url": "https://pascaliske.dev"
+    "name": "Alex Esseling",
+    "email": "alex@alex-esseling.de",
+    "url": "https://www.alex-esseling.de"
   },
   "repository": {
-    "url": "https://github.com/pascaliske/helm-charts.git",
+    "url": "https://github.com/alexvanderberkel/helm-charts.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/pascaliske/helm-charts/issues"
+    "url": "https://github.com/alexvanderberkel/helm-charts/issues"
   },
   "private": true,
   "scripts": {
