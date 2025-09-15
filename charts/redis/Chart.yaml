@@ -1,39 +1,18 @@
-# yaml-language-server: $schema=https://json.schemastore.org/chart.json
 apiVersion: v2
-type: application
-name: redis
-description: A Helm chart for Redis
-version: 2.2.0
-# renovate: image=redis
-appVersion: "8.2.1"
-
-home: https://charts.esseling.photos/charts/redis/
-sources:
-  - https://github.com/alexvanderberkel/helm-charts
-  - https://github.com/docker-library/redis
-  - https://github.com/redis/redis
-  - https://redis.io
+name: redis-ha
+home: https://redis.io/
 keywords:
-  - redis
+- redis
+- keyvalue
+- database
+version: 4.34.10
+appVersion: 8.2.1
+description: This Helm chart provides a highly available Redis implementation with a master/slave configuration and uses Sentinel sidecars for failover management
+icon: https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-shadow-tal-revivo.png
 maintainers:
-  - name: alexvanderberkel
-    email: alex@alex-esseling.de
-    url: https://esseling.photos
-
-dependencies:
-  - name: base
-    version: 1.2.0
-    repository: https://charts.esseling.photos
-
-annotations:
-  # possible kinds: added, changed, deprecated, removed, fixed, security
-  artifacthub.io/changes: |
-    - kind: added
-      description: 'Support affinity, tolerations and node selector fields.'
-    - kind: added
-      description: 'Support extra volumes and extra volume mounts.'
-    - kind: added
-      description: 'Support extra containers.'
-    - kind: added
-      description: 'Support image pull secrets.'
-      
+- email: aaron.layfield@gmail.com
+  name: dandydeveloper
+sources:
+- https://redis.io/download
+- https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha
+- https://github.com/oliver006/redis_exporter
