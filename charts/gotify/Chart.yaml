@@ -29,3 +29,4 @@ annotations:
       url: https://github.com/gotify/server
     - name: Chart Source
       url: https://github.com/alexvanderberkel/charts/tree/main/charts/gotify
+      
