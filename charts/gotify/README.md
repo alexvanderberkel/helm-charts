@@ -1,6 +1,6 @@
 # Gotify
 
-<img src="https://raw.githubusercontent.com/alexvanderberkel/charts/main/charts/gotify/icon.svg" align="right" width="92" alt="gotify logo">
+<img src="https://raw.githubusercontent.com/alexvanderberkel/helm-charts/refs/heads/main/charts/gotify/icon.svg" align="right" width="92" alt="gotify logo">
 
 ![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
