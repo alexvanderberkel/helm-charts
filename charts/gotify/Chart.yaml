@@ -2,11 +2,11 @@ apiVersion: v2
 name: gotify
 description: A simple server for sending and receiving messages in real-time per WebSocket. (Includes a sleek web-ui)
 home: https://charts.esseling.photos/charts/gotify/
-icon: https://raw.githubusercontent.com/gabe565/charts/main/charts/gotify/icon.svg
+icon: https://raw.githubusercontent.com/alexvanderberkel/charts/main/charts/gotify/icon.svg
 type: application
-version: 0.4.0
+version: 0.4.1
 # renovate datasource=docker depName=ghcr.io/gotify/server
-appVersion: 2.6.1
+appVersion: 2.8.0
 kubeVersion: ">=1.22.0-0"
 keywords:
   - notifications
@@ -23,7 +23,7 @@ sources:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update ghcr.io/gotify/server docker tag to v2.6.1
+      description: Update ghcr.io/gotify/server docker tag to v2.8.0
   artifacthub.io/links: |-
     - name: App Source
       url: https://github.com/gotify/server
