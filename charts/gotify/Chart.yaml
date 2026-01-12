@@ -1,0 +1,31 @@
+apiVersion: v2
+name: gotify
+description: A simple server for sending and receiving messages in real-time per WebSocket. (Includes a sleek web-ui)
+home: https://charts.esseling.photos/charts/gotify/
+icon: https://raw.githubusercontent.com/gabe565/charts/main/charts/gotify/icon.svg
+type: application
+version: 0.4.0
+# renovate datasource=docker depName=ghcr.io/gotify/server
+appVersion: 2.6.1
+kubeVersion: ">=1.22.0-0"
+keywords:
+  - notifications
+dependencies:
+  - name: common
+    repository: https://bjw-s.github.io/helm-charts
+    version: 1.5.1
+  - name: postgresql
+    version: 14.0.5
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+sources:
+  - https://github.com/gotify/server
+annotations:
+  artifacthub.io/changes: |-
+    - kind: changed
+      description: Update ghcr.io/gotify/server docker tag to v2.6.1
+  artifacthub.io/links: |-
+    - name: App Source
+      url: https://github.com/gotify/server
+    - name: Chart Source
+      url: https://github.com/alexvanderberkel/charts/tree/main/charts/gotify
