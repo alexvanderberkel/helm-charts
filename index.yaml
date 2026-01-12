@@ -1,0 +1,155 @@
+apiVersion: v1
+entries:
+  base:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: 'Added helpers for environment variables.'
+    apiVersion: v2
+    created: "2023-06-03T12:26:31.332231883Z"
+    description: A Helm chart for Kubernetes
+    digest: 18e2a25f0f09e5df5aca6dad9d09929b1fc798cc8ae2849351aed2b09e4dd54f
+    home: https://charts.esseling.photos
+    keywords:
+    - library-chart
+    maintainers:
+    - email: alex@alex-esseling.de
+      name: alexvanderberkel
+      url: https://esseling.photos
+    name: base
+    sources:
+    - https://github.com/alexvanderberkel/helm-charts
+    type: library
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/base-1.2.0/base-1.2.0.tgz
+    version: 1.2.0
+  fritzbox-exporter:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: removed
+          description: 'Remove values schema due to issues with flux variable substitution.'
+    apiVersion: v2
+    appVersion: "1.0"
+    created: "2025-09-13T22:14:22.88877936Z"
+    dependencies:
+    - name: base
+      repository: https://charts.pascaliske.dev
+      version: 1.2.0
+    description: A Helm chart for fritzbox-exporter
+    digest: c769afaaab19754600c1a40285518e8ffc19f5b56381b8fc0158b29080da7876
+    home: https://charts.pascaliske.dev/charts/fritzbox-exporter/
+    keywords:
+    - fritzbox-exporter
+    - fritzbox
+    - prometheus
+    - metrics
+    maintainers:
+    - email: info@pascaliske.dev
+      name: pascaliske
+      url: https://pascaliske.dev
+    name: fritzbox-exporter
+    sources:
+    - https://github.com/pascaliske/helm-charts
+    - https://git.r3ktm8.de/SeaLife-Docker/fritzbox_exporter
+    type: application
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/fritzbox-exporter-2.0.3/fritzbox-exporter-2.0.3.tgz
+    version: 2.0.3
+  gotify:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update ghcr.io/gotify/server docker tag to v2.8.0
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/gotify/server
+        - name: Chart Source
+          url: https://github.com/alexvanderberkel/charts/tree/main/charts/gotify
+    apiVersion: v2
+    appVersion: 2.8.0
+    created: "2026-01-12T21:38:23.431164663Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 1.5.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.0.5
+    description: A simple server for sending and receiving messages in real-time per
+      WebSocket. (Includes a sleek web-ui)
+    digest: d869d2f107351b29a93f4fd59b0fa0f2c292fde42eda03473923bf20003a2695
+    home: https://charts.esseling.photos/charts/gotify/
+    icon: https://raw.githubusercontent.com/alexvanderberkel/charts/main/charts/gotify/icon.svg
+    keywords:
+    - notifications
+    kubeVersion: '>=1.22.0-0'
+    name: gotify
+    sources:
+    - https://github.com/gotify/server
+    type: application
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/gotify-0.4.1/gotify-0.4.1.tgz
+    version: 0.4.1
+  redis:
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: added
+          description: 'Support affinity, tolerations and node selector fields.'
+        - kind: added
+          description: 'Support extra volumes and extra volume mounts.'
+        - kind: added
+          description: 'Support extra containers.'
+        - kind: added
+          description: 'Support image pull secrets.'
+    apiVersion: v2
+    appVersion: 8.2.1
+    created: "2025-09-13T22:38:27.100372413Z"
+    dependencies:
+    - name: base
+      repository: https://charts.esseling.photos
+      version: 1.2.0
+    description: A Helm chart for Redis
+    digest: 325c5dc1b369f97d2626409eff326957776998a06a639b0de4058412f499f1a3
+    home: https://charts.esseling.photos/charts/redis/
+    keywords:
+    - redis
+    maintainers:
+    - email: alex@alex-esseling.de
+      name: alexvanderberkel
+      url: https://esseling.photos
+    name: redis
+    sources:
+    - https://github.com/alexvanderberkel/helm-charts
+    - https://github.com/docker-library/redis
+    - https://github.com/redis/redis
+    - https://redis.io
+    type: application
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-2.2.0/redis-2.2.0.tgz
+    version: 2.2.0
+  redis-ha:
+  - apiVersion: v2
+    appVersion: 8.2.1
+    created: "2025-09-15T15:02:54.775489406Z"
+    description: This Helm chart provides a highly available Redis implementation
+      with a master/slave configuration and uses Sentinel sidecars for failover management
+    digest: 1de2c56de1fcea232b677be01b1e4ea2dbdf9883a4ceeaa1508fbf4677b9730e
+    home: https://redis.io/
+    icon: https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-shadow-tal-revivo.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: aaron.layfield@gmail.com
+      name: dandydeveloper
+    name: redis-ha
+    sources:
+    - https://redis.io/download
+    - https://github.com/DandyDeveloper/charts/blob/master/charts/redis-ha
+    - https://github.com/oliver006/redis_exporter
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.34.10/redis-ha-4.34.10.tgz
+    version: 4.34.10
+generated: "2026-01-12T21:38:23.570048462Z"

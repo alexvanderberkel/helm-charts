@@ -1,0 +1,2566 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Another repository with lightweight Helm Charts.">
+      
+      
+        <meta name="author" content="Alex Esseling">
+      
+      
+        <link rel="canonical" href="https://charts.esseling.photos/charts/redis/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../gotify/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>redis - Helm Charts</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Lato";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../styles/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="redis - Helm Charts" >
+      
+        <meta  property="og:description"  content="Another repository with lightweight Helm Charts." >
+      
+        <meta  property="og:image"  content="https://charts.esseling.photos/assets/images/social/charts/redis.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://charts.esseling.photos/charts/redis/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="redis - Helm Charts" >
+      
+        <meta  name="twitter:description"  content="Another repository with lightweight Helm Charts." >
+      
+        <meta  name="twitter:image"  content="https://charts.esseling.photos/assets/images/social/charts/redis.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#redis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Helm Charts" class="md-header__button md-logo" aria-label="Helm Charts" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Helm Charts
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              redis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="lime" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/alexvanderberkel/helm-charts" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    alexvanderberkel/helm-charts
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Helm Charts" class="md-nav__button md-logo" aria-label="Helm Charts" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    Helm Charts
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexvanderberkel/helm-charts" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    alexvanderberkel/helm-charts
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Charts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Charts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    redis
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    redis
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tldr" class="md-nav__link">
+    <span class="md-ellipsis">
+      TL;DR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-the-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrading the Chart
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading the Chart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upgrading-the-chart-from-3x-to-4x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrading the chart from 3.x to 4.x
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing the Chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstalling-the-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstalling the Chart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      General parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis-sentinel-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis Sentinel parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#haproxy-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      HAProxy parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-exporter-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus exporter parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-redis-and-sentinel-config-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Redis and Sentinel config options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#host-kernel-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Kernel Settings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#haproxy-startup" class="md-nav__link">
+    <span class="md-ellipsis">
+      HAProxy startup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network policies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sentinel-and-redis-server-split-brain-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentinel and redis server split brain detection
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gotify/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gotify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="redis">Redis</h1>
+<p><a href="http://redis.io/">Redis</a> is an advanced key-value cache and store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets, sorted sets, bitmaps and hyperloglogs.</p>
+<h2 id="tldr">TL;DR</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>alexvanderberkel<span class="w"> </span>https://charts.esseling.photos
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>install<span class="w"> </span>alexvanderberkel/redis-ha
+</code></pre></div>
+<p>By default this chart install 3 pods total:</p>
+<ul>
+<li>one pod containing a redis master and sentinel container (optional prometheus metrics exporter sidecar available)</li>
+<li>two pods each containing a redis slave and sentinel containers (optional prometheus metrics exporter sidecars available)</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>This chart bootstraps a <a href="https://redis.io">Redis</a> highly available master/slave statefulset in a <a href="http://kubernetes.io">Kubernetes</a> cluster using the Helm package manager.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Kubernetes 1.8+ with Beta APIs enabled</li>
+<li>PV provisioner support in the underlying infrastructure</li>
+<li>Helm v3+</li>
+</ul>
+<h2 id="upgrading-the-chart">Upgrading the Chart</h2>
+<p>Please note that there have been a number of changes simplifying the redis management strategy (for better failover and elections) in the 3.x version of this chart. These changes allow the use of official <a href="https://hub.docker.com/_/redis/">redis</a> images that do not require special RBAC or ServiceAccount roles. As a result when upgrading from version &gt;=2.0.1 to &gt;=3.0.0 of this chart, <code>Role</code>, <code>RoleBinding</code>, and <code>ServiceAccount</code> resources should be deleted manually.</p>
+<h3 id="upgrading-the-chart-from-3x-to-4x">Upgrading the chart from 3.x to 4.x</h3>
+<p>Starting from version <code>4.x</code> HAProxy sidecar prometheus-exporter removed and replaced by the embedded <a href="https://github.com/haproxy/haproxy/tree/master/contrib/prometheus-exporter">HAProxy metrics endpoint</a>, as a result when upgrading from version 3.x to 4.x section <code>haproxy.exporter</code> should be removed and the <code>haproxy.metrics</code> need to be configured for fit your needs.</p>
+<h2 id="installing-the-chart">Installing the Chart</h2>
+<p>To install the chart</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>alexvanderberkel<span class="w"> </span>https://charts.esseling.photos
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>helm<span class="w"> </span>install<span class="w"> </span>alexvanderberkel/redis
+</code></pre></div>
+<p>The command deploys Redis on the Kubernetes cluster in the default configuration. By default this chart install one master pod containing redis master container and sentinel container along with 2 redis slave pods each containing their own sentinel sidecars. The <a href="#configuration">configuration</a> section lists the parameters that can be configured during installation.</p>
+<blockquote>
+<p><strong>Tip</strong>: List all releases using <code>helm list</code></p>
+</blockquote>
+<h2 id="uninstalling-the-chart">Uninstalling the Chart</h2>
+<p>To uninstall/delete the deployment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>helm<span class="w"> </span>delete<span class="w"> </span>&lt;chart-name&gt;
+</code></pre></div>
+<p>The command removes all the Kubernetes components associated with the chart and deletes the release.</p>
+<h2 id="configuration">Configuration</h2>
+<p>The following table lists the configurable parameters of the Redis chart and their default values.</p>
+<h3 id="general-parameters">General parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additionalAffinities</code></td>
+<td>Additional affinities to add to the Redis server pods. # Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>affinity</code></td>
+<td>Override all other affinity settings for the Redis server pods with a string.</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>auth</code></td>
+<td>Configures redis with AUTH (requirepass &amp; masterauth conf params)</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>authKey</code></td>
+<td>Defines the key holding the redis password in existing secret.</td>
+<td>string</td>
+<td><code>"auth"</code></td>
+</tr>
+<tr>
+<td><code>authSecretAnnotations</code></td>
+<td>Annotations for auth secret</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>configmap.labels</code></td>
+<td>Custom labels for the redis configmap</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>configmapTest.image</code></td>
+<td>Image for redis-ha-configmap-test hook</td>
+<td>object</td>
+<td><code>{"repository":"koalaman/shellcheck","tag":"v0.10.0"}</code></td>
+</tr>
+<tr>
+<td><code>configmapTest.image.repository</code></td>
+<td>Repository of the configmap shellcheck test image.</td>
+<td>string</td>
+<td><code>"koalaman/shellcheck"</code></td>
+</tr>
+<tr>
+<td><code>configmapTest.image.tag</code></td>
+<td>Tag of the configmap shellcheck test image.</td>
+<td>string</td>
+<td><code>"v0.10.0"</code></td>
+</tr>
+<tr>
+<td><code>configmapTest.resources</code></td>
+<td>Resources for the ConfigMap test pod</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>containerSecurityContext</code></td>
+<td>Security context to be added to the Redis containers.</td>
+<td>object</td>
+<td><code>{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"runAsNonRoot":true,"runAsUser":1000,"seccompProfile":{"type":"RuntimeDefault"}}</code></td>
+</tr>
+<tr>
+<td><code>emptyDir</code></td>
+<td>Configuration of <code>emptyDir</code>, used only if persistentVolume is disabled and no hostPath specified</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>existingSecret</code></td>
+<td>An existing secret containing a key defined by <code>authKey</code> that configures <code>requirepass</code> and <code>masterauth</code> in the conf parameters (Requires <code>auth: enabled</code>, cannot be used in conjunction with <code>.Values.redisPassword</code>)</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>extraContainers</code></td>
+<td>Extra containers to include in StatefulSet</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraInitContainers</code></td>
+<td>Extra init containers to include in StatefulSet</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>extraLabels</code></td>
+<td>Labels added here are applied to all created resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>extraVolumes</code></td>
+<td>Extra volumes to include in StatefulSet</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>fullnameOverride</code></td>
+<td>Full name of the Redis HA Resources</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>global.compatibility</code></td>
+<td>Openshift compatibility options</td>
+<td>object</td>
+<td><code>{"openshift":{"adaptSecurityContext":"auto"}}</code></td>
+</tr>
+<tr>
+<td><code>global.priorityClassName</code></td>
+<td>Default priority class for all components</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>hardAntiAffinity</code></td>
+<td>Whether the Redis server pods should be forced to run on separate nodes. # This is accomplished by setting their AntiAffinity with requiredDuringSchedulingIgnoredDuringExecution as opposed to preferred. # Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#inter-pod-affinity-and-anti-affinity-beta-feature</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>hostPath.chown</code></td>
+<td>if chown is true, an init-container with root permissions is launched to change the owner of the hostPath folder to the user defined in the security context</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>hostPath.path</code></td>
+<td>Use this path on the host for data storage. path is evaluated as template so placeholders are replaced</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>image.pullPolicy</code></td>
+<td>Redis image pull policy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+</tr>
+<tr>
+<td><code>image.repository</code></td>
+<td>Redis image repository</td>
+<td>string</td>
+<td><code>"public.ecr.aws/docker/library/redis"</code></td>
+</tr>
+<tr>
+<td><code>image.tag</code></td>
+<td>Redis image tag</td>
+<td>string</td>
+<td><code>"8.2.1-alpine"</code></td>
+</tr>
+<tr>
+<td><code>imagePullSecrets</code></td>
+<td>Reference to one or more secrets to be used when pulling redis images</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>init.resources</code></td>
+<td>Extra init resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>Custom labels for the redis pod</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>nameOverride</code></td>
+<td>Name override for Redis HA resources</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.annotations</code></td>
+<td>Annotations for NetworkPolicy</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.egressRules</code></td>
+<td>user can define egress rules too, uses the same structure as ingressRules</td>
+<td>list</td>
+<td><code>[{"ports":[{"port":53,"protocol":"UDP"},{"port":53,"protocol":"TCP"}],"selectors":[{"namespaceSelector":{}},{"ipBlock":{"cidr":"169.254.0.0/16"}}]}]</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.egressRules[0].selectors[0]</code></td>
+<td>Allow all destinations for DNS traffic</td>
+<td>object</td>
+<td><code>{"namespaceSelector":{}}</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.enabled</code></td>
+<td>whether NetworkPolicy for Redis StatefulSets should be created. when enabled, inter-Redis connectivity is created</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.ingressRules</code></td>
+<td>User defined ingress rules that Redis should permit into. Uses the format defined in https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>networkPolicy.labels</code></td>
+<td>Labels for NetworkPolicy</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>nodeSelector</code></td>
+<td>Node labels for pod assignment</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistentVolume.accessModes</code></td>
+<td>Persistent volume access modes</td>
+<td>list</td>
+<td><code>["ReadWriteOnce"]</code></td>
+</tr>
+<tr>
+<td><code>persistentVolume.annotations</code></td>
+<td>Annotations for the volume</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistentVolume.enabled</code></td>
+<td>Enable persistent volume</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>persistentVolume.labels</code></td>
+<td>Labels for the volume</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>persistentVolume.size</code></td>
+<td>Persistent volume size</td>
+<td>string</td>
+<td><code>"10Gi"</code></td>
+</tr>
+<tr>
+<td><code>persistentVolume.storageClass</code></td>
+<td>redis-ha data Persistent Volume Storage Class</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>podDisruptionBudget</code></td>
+<td>Pod Disruption Budget rules</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>podManagementPolicy</code></td>
+<td>The statefulset pod management policy</td>
+<td>string</td>
+<td><code>"OrderedReady"</code></td>
+</tr>
+<tr>
+<td><code>priorityClassName</code></td>
+<td>Kubernetes priorityClass name for the redis-ha-server pod</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>rbac.create</code></td>
+<td>Create and use RBAC resources</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>redis.annotations</code></td>
+<td>Annotations for the redis statefulset</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>redis.authClients</code></td>
+<td>It is possible to disable client side certificates authentication when "authClients" is set to "no"</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>redis.config</code></td>
+<td>Any valid redis config options in this section will be applied to each server, For multi-value configs use list instead of string (for example loadmodule) (see below)</td>
+<td>object</td>
+<td>see values.yaml</td>
+</tr>
+<tr>
+<td><code>redis.config.maxmemory</code></td>
+<td>Max memory to use for each redis instance. Default is unlimited.</td>
+<td>string</td>
+<td><code>"0"</code></td>
+</tr>
+<tr>
+<td><code>redis.config.maxmemory-policy</code></td>
+<td>Max memory policy to use for each redis instance. Default is volatile-lru.</td>
+<td>string</td>
+<td><code>"volatile-lru"</code></td>
+</tr>
+<tr>
+<td><code>redis.config.min-replicas-max-lag</code></td>
+<td>Value in seconds</td>
+<td>int</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>redis.config.repl-diskless-sync</code></td>
+<td>When enabled, directly sends the RDB over the wire to slaves, without using the disk as intermediate storage. Default is false.</td>
+<td>string</td>
+<td><code>"yes"</code></td>
+</tr>
+<tr>
+<td><code>redis.config.save</code></td>
+<td>Please note that local (on-disk) RDBs will still be created when re-syncing with a new slave. The only way to prevent this is to enable diskless replication.</td>
+<td>string</td>
+<td><code>"900 1"</code></td>
+</tr>
+<tr>
+<td><code>redis.customArgs</code></td>
+<td>Allows overriding the redis container arguments</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>redis.customCommand</code></td>
+<td>Allows overriding the redis container command</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>redis.customConfig</code></td>
+<td>Allows for custom redis.conf files to be applied. If this is used then <code>redis.config</code> is ignored</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>redis.disableCommands</code></td>
+<td>Array with commands to disable</td>
+<td>list</td>
+<td><code>["FLUSHDB","FLUSHALL"]</code></td>
+</tr>
+<tr>
+<td><code>redis.envFrom</code></td>
+<td>Load environment variables from ConfigMap/Secret</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>redis.extraVolumeMounts</code></td>
+<td>additional volumeMounts for Redis container</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>redis.lifecycle</code></td>
+<td>Container Lifecycle Hooks for redis container Ref: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/</td>
+<td>object</td>
+<td>see values.yaml</td>
+</tr>
+<tr>
+<td><code>redis.livenessProbe</code></td>
+<td>Liveness probe parameters for redis container</td>
+<td>object</td>
+<td><code>{"enabled":true,"failureThreshold":5,"initialDelaySeconds":30,"periodSeconds":15,"successThreshold":1,"timeoutSeconds":15}</code></td>
+</tr>
+<tr>
+<td><code>redis.livenessProbe.enabled</code></td>
+<td>Enable the Liveness Probe</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>redis.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for liveness probe</td>
+<td>int</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>redis.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay in seconds for liveness probe</td>
+<td>int</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>redis.livenessProbe.periodSeconds</code></td>
+<td>Period in seconds after which liveness probe will be repeated</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>redis.livenessProbe.successThreshold</code></td>
+<td>Success threshold for liveness probe</td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>redis.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for liveness probe</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>redis.masterGroupName</code></td>
+<td>Redis convention for naming the cluster group: must match <code>^[\\w-\\.]+$</code> and can be templated</td>
+<td>string</td>
+<td><code>"mymaster"</code></td>
+</tr>
+<tr>
+<td><code>redis.podAnnotations</code></td>
+<td>Annotations to be added to the redis statefulset pods</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>redis.port</code></td>
+<td>Port to access the redis service</td>
+<td>int</td>
+<td><code>6379</code></td>
+</tr>
+<tr>
+<td><code>redis.readinessProbe</code></td>
+<td>Readiness probe parameters for redis container</td>
+<td>object</td>
+<td><code>{"enabled":true,"failureThreshold":5,"initialDelaySeconds":30,"periodSeconds":15,"successThreshold":1,"timeoutSeconds":15}</code></td>
+</tr>
+<tr>
+<td><code>redis.readinessProbe.enabled</code></td>
+<td>Enable the Readiness Probe</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>redis.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readiness probe</td>
+<td>int</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>redis.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay in seconds for readiness probe</td>
+<td>int</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>redis.readinessProbe.periodSeconds</code></td>
+<td>Period in seconds after which readiness probe will be repeated</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>redis.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readiness probe</td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>redis.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readiness probe</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>redis.resources</code></td>
+<td>CPU/Memory for master/slave nodes resource requests/limits</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>redis.startupProbe</code></td>
+<td>Startup probe parameters for redis container</td>
+<td>object</td>
+<td><code>{"enabled":true,"failureThreshold":5,"initialDelaySeconds":30,"periodSeconds":15,"successThreshold":1,"timeoutSeconds":15}</code></td>
+</tr>
+<tr>
+<td><code>redis.startupProbe.enabled</code></td>
+<td>Enable Startup Probe</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>redis.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startup probe</td>
+<td>int</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>redis.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay in seconds for startup probe</td>
+<td>int</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>redis.startupProbe.periodSeconds</code></td>
+<td>Period in seconds after which startup probe will be repeated</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>redis.startupProbe.successThreshold</code></td>
+<td>Success threshold for startup probe</td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>redis.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startup probe</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>redis.terminationGracePeriodSeconds</code></td>
+<td>Increase terminationGracePeriodSeconds to allow writing large RDB snapshots. (k8s default is 30s) ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination-forced</td>
+<td>int</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td><code>redis.tlsPort</code></td>
+<td>TLS Port to access the redis service</td>
+<td>int</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>redis.tlsReplication</code></td>
+<td>Configures redis with tls-replication parameter, if true sets "tls-replication yes" in redis.conf</td>
+<td>bool</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>redis.updateStrategy</code></td>
+<td>Update strategy for Redis StatefulSet # ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies</td>
+<td>object</td>
+<td><code>{"type":"RollingUpdate"}</code></td>
+</tr>
+<tr>
+<td><code>redisPassword</code></td>
+<td>A password that configures a <code>requirepass</code> and <code>masterauth</code> in the conf parameters (Requires <code>auth: enabled</code>)</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>replicas</code></td>
+<td>Number of redis master/slave</td>
+<td>int</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>restore.existingSecret</code></td>
+<td>Set existingSecret to true to use secret specified in existingSecret above</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>restore.redis.source</code></td>
+<td></td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>restore.s3.access_key</code></td>
+<td>Restore init container - AWS AWS_ACCESS_KEY_ID to access restore.s3.source</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>restore.s3.region</code></td>
+<td>Restore init container - AWS AWS_REGION to access restore.s3.source</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>restore.s3.secret_key</code></td>
+<td>Restore init container - AWS AWS_SECRET_ACCESS_KEY to access restore.s3.source</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>restore.s3.source</code></td>
+<td>Restore init container - AWS S3 location of dump - i.e. s3://bucket/dump.rdb or false</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>restore.ssh.key</code></td>
+<td>Restore init container - SSH private key to scp restore.ssh.source to init container. Key should be in one line separated with \n. i.e. <code>-----BEGIN RSA PRIVATE KEY-----\n...\n...\n-----END RSA PRIVATE KEY-----</code></td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>restore.ssh.source</code></td>
+<td>Restore init container - SSH scp location of dump - i.e. user@server:/path/dump.rdb or false</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>restore.timeout</code></td>
+<td>Timeout for the restore</td>
+<td>int</td>
+<td><code>600</code></td>
+</tr>
+<tr>
+<td><code>ro_replicas</code></td>
+<td>Comma separated list of slaves which never get promoted to be master. Count starts with 0. Allowed values 1-9. i.e. 3,4 - 3th and 4th redis slave never make it to be master, where master is index 0.</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>schedulerName</code></td>
+<td>Use an alternate scheduler, e.g. "stork". ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>securityContext</code></td>
+<td>Security context to be added to the Redis StatefulSet.</td>
+<td>object</td>
+<td><code>{"fsGroup":1000,"runAsNonRoot":true,"runAsUser":1000}</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.annotations</code></td>
+<td>Annotations to be added to the service account for the redis statefulset</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.automountToken</code></td>
+<td>opt in/out of automounting API credentials into container. Ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.create</code></td>
+<td>Specifies whether a ServiceAccount should be created</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>serviceAccount.name</code></td>
+<td>The name of the ServiceAccount to use. If not set and create is true, a name is generated using the redis-ha.fullname template</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>serviceLabels</code></td>
+<td>Custom labels for redis service</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>splitBrainDetection.interval</code></td>
+<td>Interval between redis sentinel and server split brain checks (in seconds)</td>
+<td>int</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td><code>splitBrainDetection.resources</code></td>
+<td>splitBrainDetection resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>splitBrainDetection.retryInterval</code></td>
+<td></td>
+<td>int</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>sysctlImage.command</code></td>
+<td>sysctlImage command to execute</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sysctlImage.enabled</code></td>
+<td>Enable an init container to modify Kernel settings</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>sysctlImage.mountHostSys</code></td>
+<td>Mount the host <code>/sys</code> folder to <code>/host-sys</code></td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>sysctlImage.pullPolicy</code></td>
+<td>sysctlImage Init container pull policy</td>
+<td>string</td>
+<td><code>"Always"</code></td>
+</tr>
+<tr>
+<td><code>sysctlImage.registry</code></td>
+<td>sysctlImage Init container registry</td>
+<td>string</td>
+<td><code>"public.ecr.aws/docker/library"</code></td>
+</tr>
+<tr>
+<td><code>sysctlImage.repository</code></td>
+<td>sysctlImage Init container name</td>
+<td>string</td>
+<td><code>"busybox"</code></td>
+</tr>
+<tr>
+<td><code>sysctlImage.resources</code></td>
+<td>sysctlImage resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>sysctlImage.tag</code></td>
+<td>sysctlImage Init container tag</td>
+<td>string</td>
+<td><code>"1.34.1"</code></td>
+</tr>
+<tr>
+<td><code>tls.caCertFile</code></td>
+<td>Name of CA certificate file</td>
+<td>string</td>
+<td><code>"ca.crt"</code></td>
+</tr>
+<tr>
+<td><code>tls.certFile</code></td>
+<td>Name of certificate file</td>
+<td>string</td>
+<td><code>"redis.crt"</code></td>
+</tr>
+<tr>
+<td><code>tls.dhParamsFile</code></td>
+<td>Name of Diffie-Hellman (DH) key exchange parameters file (Example: redis.dh)</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>tls.keyFile</code></td>
+<td>Name of key file</td>
+<td>string</td>
+<td><code>"redis.key"</code></td>
+</tr>
+<tr>
+<td><code>tolerations</code></td>
+<td></td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints.enabled</code></td>
+<td>Enable topology spread constraints</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints.maxSkew</code></td>
+<td>Max skew of pods tolerated</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints.topologyKey</code></td>
+<td>Topology key for spread constraints</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>topologySpreadConstraints.whenUnsatisfiable</code></td>
+<td>Enforcement policy, hard or soft</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="redis-sentinel-parameters">Redis Sentinel parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sentinel.auth</code></td>
+<td>Enables or disables sentinel AUTH (Requires <code>sentinel.password</code> to be set)</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>sentinel.authClients</code></td>
+<td>It is possible to disable client side certificates authentication when "authClients" is set to "no"</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>sentinel.authKey</code></td>
+<td>The key holding the sentinel password in an existing secret.</td>
+<td>string</td>
+<td><code>"sentinel-password"</code></td>
+</tr>
+<tr>
+<td><code>sentinel.config</code></td>
+<td>Valid sentinel config options in this section will be applied as config options to each sentinel (see below)</td>
+<td>object</td>
+<td>see values.yaml</td>
+</tr>
+<tr>
+<td><code>sentinel.customArgs</code></td>
+<td></td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sentinel.customCommand</code></td>
+<td></td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sentinel.customConfig</code></td>
+<td>Allows for custom sentinel.conf files to be applied. If this is used then <code>sentinel.config</code> is ignored</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>sentinel.existingSecret</code></td>
+<td>An existing secret containing a key defined by <code>sentinel.authKey</code> that configures <code>requirepass</code> in the conf parameters (Requires <code>sentinel.auth: enabled</code>, cannot be used in conjunction with <code>.Values.sentinel.password</code>)</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>sentinel.extraVolumeMounts</code></td>
+<td>additional volumeMounts for Sentinel container</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>sentinel.lifecycle</code></td>
+<td>Container Lifecycle Hooks for sentinel container. Ref: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>sentinel.livenessProbe.enabled</code></td>
+<td></td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>sentinel.livenessProbe.failureThreshold</code></td>
+<td>Failure threshold for liveness probe</td>
+<td>int</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>sentinel.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay in seconds for liveness probe</td>
+<td>int</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>sentinel.livenessProbe.periodSeconds</code></td>
+<td>Period in seconds after which liveness probe will be repeated</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>sentinel.livenessProbe.successThreshold</code></td>
+<td>Success threshold for liveness probe</td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>sentinel.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for liveness probe</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>sentinel.password</code></td>
+<td>A password that configures a <code>requirepass</code> in the conf parameters (Requires <code>sentinel.auth: enabled</code>)</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>sentinel.port</code></td>
+<td>Port to access the sentinel service</td>
+<td>int</td>
+<td><code>26379</code></td>
+</tr>
+<tr>
+<td><code>sentinel.quorum</code></td>
+<td>Minimum number of nodes expected to be live.</td>
+<td>int</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>sentinel.readinessProbe.enabled</code></td>
+<td></td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>sentinel.readinessProbe.failureThreshold</code></td>
+<td>Failure threshold for readiness probe</td>
+<td>int</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>sentinel.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay in seconds for readiness probe</td>
+<td>int</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>sentinel.readinessProbe.periodSeconds</code></td>
+<td>Period in seconds after which readiness probe will be repeated</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>sentinel.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readiness probe</td>
+<td>int</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>sentinel.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readiness probe</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>sentinel.resources</code></td>
+<td>CPU/Memory for sentinel node resource requests/limits</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>sentinel.startupProbe</code></td>
+<td>Startup probe parameters for redis container</td>
+<td>object</td>
+<td><code>{"enabled":true,"failureThreshold":3,"initialDelaySeconds":5,"periodSeconds":10,"successThreshold":1,"timeoutSeconds":15}</code></td>
+</tr>
+<tr>
+<td><code>sentinel.startupProbe.enabled</code></td>
+<td>Enable Startup Probe</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>sentinel.startupProbe.failureThreshold</code></td>
+<td>Failure threshold for startup probe</td>
+<td>int</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>sentinel.startupProbe.initialDelaySeconds</code></td>
+<td>Initial delay in seconds for startup probe</td>
+<td>int</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>sentinel.startupProbe.periodSeconds</code></td>
+<td>Period in seconds after which startup probe will be repeated</td>
+<td>int</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>sentinel.startupProbe.successThreshold</code></td>
+<td>Success threshold for startup probe</td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>sentinel.startupProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for startup probe</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>sentinel.tlsPort</code></td>
+<td>TLS Port to access the sentinel service</td>
+<td>int</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>sentinel.tlsReplication</code></td>
+<td>Configures sentinel with tls-replication parameter, if true sets "tls-replication yes" in sentinel.conf</td>
+<td>bool</td>
+<td><code>nil</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="haproxy-parameters">HAProxy parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>haproxy.IPv6.enabled</code></td>
+<td>Enable HAProxy parameters to bind and consume IPv6 addresses. Enabled by default.</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>haproxy.additionalAffinities</code></td>
+<td>Additional affinities to add to the haproxy pods.</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.affinity</code></td>
+<td>Override all other affinity settings for the haproxy pods with a string.</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>haproxy.annotations</code></td>
+<td>HAProxy template annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.checkFall</code></td>
+<td>haproxy.cfg <code>check fall</code> setting</td>
+<td>int</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>haproxy.checkInterval</code></td>
+<td>haproxy.cfg <code>check inter</code> setting</td>
+<td>string</td>
+<td><code>"1s"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.containerPort</code></td>
+<td>Modify HAProxy deployment container port</td>
+<td>int</td>
+<td><code>6379</code></td>
+</tr>
+<tr>
+<td><code>haproxy.containerSecurityContext</code></td>
+<td>Security context to be added to the HAProxy containers.</td>
+<td>object</td>
+<td><code>{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"runAsNonRoot":true,"seccompProfile":{"type":"RuntimeDefault"}}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.customConfig</code></td>
+<td>Allows for custom config-haproxy.cfg file to be applied. If this is used then default config will be overwriten</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>haproxy.deploymentAnnotations</code></td>
+<td>HAProxy deployment annotations</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.deploymentStrategy</code></td>
+<td>Deployment strategy for the haproxy deployment</td>
+<td>object</td>
+<td><code>{"type":"RollingUpdate"}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.emptyDir</code></td>
+<td>Configuration of <code>emptyDir</code></td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.enabled</code></td>
+<td>Enabled HAProxy LoadBalancing/Proxy</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>haproxy.extraConfig</code></td>
+<td>Allows to place any additional configuration section to add to the default config-haproxy.cfg</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>haproxy.hardAntiAffinity</code></td>
+<td>Whether the haproxy pods should be forced to run on separate nodes.</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>haproxy.image.pullPolicy</code></td>
+<td>HAProxy Image PullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.image.repository</code></td>
+<td>HAProxy Image Repository</td>
+<td>string</td>
+<td><code>"public.ecr.aws/docker/library/haproxy"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.image.tag</code></td>
+<td>HAProxy Image Tag</td>
+<td>string</td>
+<td><code>"3.0.8-alpine"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.imagePullSecrets</code></td>
+<td>Reference to one or more secrets to be used when pulling images ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>haproxy.init.resources</code></td>
+<td>Extra init resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.labels</code></td>
+<td>Custom labels for the haproxy pod</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.lifecycle</code></td>
+<td>Container lifecycle hooks. Ref: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.enabled</code></td>
+<td>HAProxy enable prometheus metric scraping</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.port</code></td>
+<td>HAProxy prometheus metrics scraping port</td>
+<td>int</td>
+<td><code>9101</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.portName</code></td>
+<td>HAProxy metrics scraping port name</td>
+<td>string</td>
+<td><code>"http-exporter-port"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.scrapePath</code></td>
+<td>HAProxy prometheus metrics scraping path</td>
+<td>string</td>
+<td><code>"/metrics"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.serviceMonitor.disableAPICheck</code></td>
+<td>Disable API Check on ServiceMonitor</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.serviceMonitor.enabled</code></td>
+<td>When set true then use a ServiceMonitor to configure scraping</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.serviceMonitor.endpointAdditionalProperties</code></td>
+<td>Set additional properties for the ServiceMonitor endpoints such as relabeling, scrapeTimeout, tlsConfig, and more.</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.serviceMonitor.interval</code></td>
+<td>Set how frequently Prometheus should scrape (default is 30s)</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.serviceMonitor.labels</code></td>
+<td>Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.serviceMonitor.namespace</code></td>
+<td>Set the namespace the ServiceMonitor should be deployed</td>
+<td>string</td>
+<td><code>.Release.Namespace</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.serviceMonitor.telemetryPath</code></td>
+<td>Set path to redis-exporter telemtery-path (default is /metrics)</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>haproxy.metrics.serviceMonitor.timeout</code></td>
+<td>Set timeout for scrape (default is 10s)</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>haproxy.networkPolicy.annotations</code></td>
+<td>Annotations for Haproxy NetworkPolicy</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.networkPolicy.egressRules</code></td>
+<td>user can define egress rules too, uses the same structure as ingressRules</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>haproxy.networkPolicy.enabled</code></td>
+<td>whether NetworkPolicy for Haproxy should be created</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>haproxy.networkPolicy.ingressRules</code></td>
+<td>user defined ingress rules that Haproxy should permit into. uses the format defined in https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>haproxy.networkPolicy.labels</code></td>
+<td>Labels for Haproxy NetworkPolicy</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.podAnnotations</code></td>
+<td>Annotations to be added to the HAProxy deployment pods</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.podDisruptionBudget</code></td>
+<td>Pod Disruption Budget ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.priorityClassName</code></td>
+<td>Kubernetes priorityClass name for the haproxy pod</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>haproxy.readOnly</code></td>
+<td>Enable read-only redis-slaves</td>
+<td>object</td>
+<td><code>{"enabled":false,"port":6380}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.readOnly.enabled</code></td>
+<td>Enable if you want a dedicated port in haproxy for redis-slaves</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>haproxy.readOnly.port</code></td>
+<td>Port for the read-only redis-slaves</td>
+<td>int</td>
+<td><code>6380</code></td>
+</tr>
+<tr>
+<td><code>haproxy.replicas</code></td>
+<td>Number of HAProxy instances</td>
+<td>int</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>haproxy.resources</code></td>
+<td>HAProxy resources</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.securityContext</code></td>
+<td>Security context to be added to the HAProxy deployment.</td>
+<td>object</td>
+<td><code>{"fsGroup":99,"runAsNonRoot":true,"runAsUser":99}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.service.annotations</code></td>
+<td>HAProxy service annotations</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>haproxy.service.externalIPs</code></td>
+<td>HAProxy external IPs</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.service.externalTrafficPolicy</code></td>
+<td>HAProxy service externalTrafficPolicy value (haproxy.service.type must be LoadBalancer)</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>haproxy.service.labels</code></td>
+<td>HAProxy service labels</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.service.loadBalancerIP</code></td>
+<td>HAProxy service loadbalancer IP</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>haproxy.service.loadBalancerSourceRanges</code></td>
+<td>List of CIDR's allowed to connect to LoadBalancer</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>haproxy.service.nodePort</code></td>
+<td>HAProxy service nodePort value (haproxy.service.type must be NodePort)</td>
+<td>int</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>haproxy.service.type</code></td>
+<td>HAProxy service type "ClusterIP", "LoadBalancer" or "NodePort"</td>
+<td>string</td>
+<td><code>"ClusterIP"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.serviceAccount.automountToken</code></td>
+<td></td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>haproxy.serviceAccount.create</code></td>
+<td>Specifies whether a ServiceAccount should be created</td>
+<td>bool</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>haproxy.serviceAccountName</code></td>
+<td>HAProxy serviceAccountName</td>
+<td>string</td>
+<td><code>"redis-sa"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.servicePort</code></td>
+<td>Modify HAProxy service port</td>
+<td>int</td>
+<td><code>6379</code></td>
+</tr>
+<tr>
+<td><code>haproxy.stickyBalancing</code></td>
+<td>HAProxy sticky load balancing to Redis nodes. Helps with connections shutdown.</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>haproxy.tests.resources</code></td>
+<td>Pod resources for the tests against HAProxy.</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.timeout.check</code></td>
+<td>haproxy.cfg <code>timeout check</code> setting</td>
+<td>string</td>
+<td><code>"2s"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.timeout.client</code></td>
+<td>haproxy.cfg <code>timeout client</code> setting</td>
+<td>string</td>
+<td><code>"330s"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.timeout.connect</code></td>
+<td>haproxy.cfg <code>timeout connect</code> setting</td>
+<td>string</td>
+<td><code>"4s"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.timeout.server</code></td>
+<td>haproxy.cfg <code>timeout server</code> setting</td>
+<td>string</td>
+<td><code>"330s"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.tls</code></td>
+<td>Enable TLS termination on HAproxy, This will create a volume mount</td>
+<td>object</td>
+<td><code>{"certMountPath":"/tmp/","enabled":false,"keyName":null,"secretName":""}</code></td>
+</tr>
+<tr>
+<td><code>haproxy.tls.certMountPath</code></td>
+<td>Path to mount the secret that contains the certificates. haproxy</td>
+<td>string</td>
+<td><code>"/tmp/"</code></td>
+</tr>
+<tr>
+<td><code>haproxy.tls.enabled</code></td>
+<td>If "true" this will enable TLS termination on haproxy</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>haproxy.tls.keyName</code></td>
+<td>Key file name</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>haproxy.tls.secretName</code></td>
+<td>Secret containing the .pem file</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="prometheus-exporter-parameters">Prometheus exporter parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exporter.address</code></td>
+<td>Address/Host for Redis instance. Exists to circumvent issues with IPv6 dns resolution that occurs on certain environments</td>
+<td>string</td>
+<td><code>"localhost"</code></td>
+</tr>
+<tr>
+<td><code>exporter.enabled</code></td>
+<td>If <code>true</code>, the prometheus exporter sidecar is enabled</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>exporter.extraArgs</code></td>
+<td>Additional args for redis exporter</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>exporter.image</code></td>
+<td>Exporter image</td>
+<td>string</td>
+<td><code>"quay.io/oliver006/redis_exporter"</code></td>
+</tr>
+<tr>
+<td><code>exporter.livenessProbe.httpGet.path</code></td>
+<td>Exporter liveness probe httpGet path</td>
+<td>string</td>
+<td><code>"/metrics"</code></td>
+</tr>
+<tr>
+<td><code>exporter.livenessProbe.httpGet.port</code></td>
+<td>Exporter liveness probe httpGet port</td>
+<td>int</td>
+<td><code>9121</code></td>
+</tr>
+<tr>
+<td><code>exporter.livenessProbe.initialDelaySeconds</code></td>
+<td>Initial delay in seconds for liveness probe of exporter</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>exporter.livenessProbe.periodSeconds</code></td>
+<td>Period in seconds after which liveness probe will be repeated</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>exporter.livenessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for liveness probe of exporter</td>
+<td>int</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>exporter.port</code></td>
+<td>Exporter port</td>
+<td>int</td>
+<td><code>9121</code></td>
+</tr>
+<tr>
+<td><code>exporter.portName</code></td>
+<td>Exporter port name</td>
+<td>string</td>
+<td><code>"exporter-port"</code></td>
+</tr>
+<tr>
+<td><code>exporter.pullPolicy</code></td>
+<td>Exporter image pullPolicy</td>
+<td>string</td>
+<td><code>"IfNotPresent"</code></td>
+</tr>
+<tr>
+<td><code>exporter.readinessProbe.httpGet.path</code></td>
+<td>Exporter readiness probe httpGet path</td>
+<td>string</td>
+<td><code>"/metrics"</code></td>
+</tr>
+<tr>
+<td><code>exporter.readinessProbe.httpGet.port</code></td>
+<td>Exporter readiness probe httpGet port</td>
+<td>int</td>
+<td><code>9121</code></td>
+</tr>
+<tr>
+<td><code>exporter.readinessProbe.initialDelaySeconds</code></td>
+<td>Initial delay in seconds for readiness probe of exporter</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>exporter.readinessProbe.periodSeconds</code></td>
+<td>Period in seconds after which readiness probe will be repeated</td>
+<td>int</td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>exporter.readinessProbe.successThreshold</code></td>
+<td>Success threshold for readiness probe of exporter</td>
+<td>int</td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>exporter.readinessProbe.timeoutSeconds</code></td>
+<td>Timeout seconds for readiness probe of exporter</td>
+<td>int</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>exporter.resources</code></td>
+<td>cpu/memory resource limits/requests</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>exporter.scrapePath</code></td>
+<td>Exporter scrape path</td>
+<td>string</td>
+<td><code>"/metrics"</code></td>
+</tr>
+<tr>
+<td><code>exporter.script</code></td>
+<td>A custom custom Lua script that will be mounted to exporter for collection of custom metrics. Creates a ConfigMap and sets env var <code>REDIS_EXPORTER_SCRIPT</code>.</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.disableAPICheck</code></td>
+<td>Disable API Check on ServiceMonitor</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.enabled</code></td>
+<td>When set true then use a ServiceMonitor to configure scraping</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.endpointAdditionalProperties</code></td>
+<td>Set additional properties for the ServiceMonitor endpoints such as relabeling, scrapeTimeout, tlsConfig, and more.</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.interval</code></td>
+<td>Set how frequently Prometheus should scrape (default is 30s)</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.labels</code></td>
+<td>Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.metricRelabelings</code></td>
+<td></td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.namespace</code></td>
+<td>Set the namespace the ServiceMonitor should be deployed</td>
+<td>string</td>
+<td><code>.Release.Namespace</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.relabelings</code></td>
+<td></td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.telemetryPath</code></td>
+<td>Set path to redis-exporter telemtery-path (default is /metrics)</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>exporter.serviceMonitor.timeout</code></td>
+<td>Set timeout for scrape (default is 10s)</td>
+<td>string</td>
+<td><code>""</code></td>
+</tr>
+<tr>
+<td><code>exporter.tag</code></td>
+<td>Exporter image tag</td>
+<td>string</td>
+<td><code>"v1.67.0"</code></td>
+</tr>
+<tr>
+<td><code>prometheusRule.additionalLabels</code></td>
+<td>Additional labels to be set in metadata.</td>
+<td>object</td>
+<td><code>{}</code></td>
+</tr>
+<tr>
+<td><code>prometheusRule.enabled</code></td>
+<td>If true, creates a Prometheus Operator PrometheusRule.</td>
+<td>bool</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>prometheusRule.interval</code></td>
+<td>How often rules in the group are evaluated (falls back to <code>global.evaluation_interval</code> if not set).</td>
+<td>string</td>
+<td><code>"10s"</code></td>
+</tr>
+<tr>
+<td><code>prometheusRule.namespace</code></td>
+<td>Namespace which Prometheus is running in.</td>
+<td>string</td>
+<td><code>nil</code></td>
+</tr>
+<tr>
+<td><code>prometheusRule.rules</code></td>
+<td>Rules spec template (see https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#rule).</td>
+<td>list</td>
+<td><code>[]</code></td>
+</tr>
+</tbody>
+</table>
+<p>Specify each parameter using the <code>--set key=value[,key=value]</code> argument to <code>helm install</code>. For example,</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>alexvanderberkel<span class="w"> </span>https://charts.esseling.photos
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--set<span class="w"> </span><span class="nv">image</span><span class="o">=</span>redis<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--set<span class="w"> </span><span class="nv">tag</span><span class="o">=</span><span class="m">5</span>.0.5-alpine<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>alexvanderberkel/redis
+</code></pre></div>
+<p>The above command sets the Redis server within <code>default</code> namespace.</p>
+<p>Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>helm<span class="w"> </span>install<span class="w"> </span>-f<span class="w"> </span>values.yaml<span class="w"> </span>alexvanderberkel/redis
+</code></pre></div>
+<blockquote>
+<p><strong>Tip</strong>: You can use the default <a href="values.yaml">values.yaml</a></p>
+</blockquote>
+<h2 id="custom-redis-and-sentinel-config-options">Custom Redis and Sentinel config options</h2>
+<p>This chart allows for most redis or sentinel config options to be passed as a key value pair through the <code>values.yaml</code> under <code>redis.config</code> and <code>sentinel.config</code>. See links below for all available options.</p>
+<p><a href="http://download.redis.io/redis-stable/redis.conf">Example redis.conf</a>
+<a href="http://download.redis.io/redis-stable/sentinel.conf">Example sentinel.conf</a></p>
+<p>For example <code>repl-timeout 60</code> would be added to the <code>redis.config</code> section of the <code>values.yaml</code> as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>    repl-timeout: &quot;60&quot;
+</code></pre></div>
+<p>Note:</p>
+<ol>
+<li>Some config options should be renamed by redis version，e.g.:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># In redis 5.x，see https://raw.githubusercontent.com/antirez/redis/5.0/redis.conf
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>min-replicas-to-write: 1
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>min-replicas-max-lag: 5
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a># In redis 4.x and redis 3.x，see https://raw.githubusercontent.com/antirez/redis/4.0/redis.conf and https://raw.githubusercontent.com/antirez/redis/3.0/redis.conf
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>min-slaves-to-write 1
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>min-slaves-max-lag 5
+</code></pre></div>
+<p>Sentinel options supported must be in the the <code>sentinel &lt;option&gt; &lt;master-group-name&gt; &lt;value&gt;</code> format. For example, <code>sentinel down-after-milliseconds 30000</code> would be added to the <code>sentinel.config</code> section of the <code>values.yaml</code> as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>    down-after-milliseconds: 30000
+</code></pre></div>
+<p>If more control is needed from either the redis or sentinel config then an entire config can be defined under <code>redis.customConfig</code> or <code>sentinel.customConfig</code>. Please note that these values will override any configuration options under their respective section. For example, if you define <code>sentinel.customConfig</code> then the <code>sentinel.config</code> is ignored.</p>
+<h2 id="host-kernel-settings">Host Kernel Settings</h2>
+<p>Redis may require some changes in the kernel of the host machine to work as expected, in particular increasing the <code>somaxconn</code> value and disabling transparent huge pages.
+To do so, you can set up a privileged initContainer with the <code>sysctlImage</code> config values, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sysctlImage:
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  enabled: true
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  mountHostSys: true
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  command:
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    - /bin/sh
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    - -xc
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    - |-
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>      sysctl -w net.core.somaxconn=10000
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>      echo never &gt; /host-sys/kernel/mm/transparent_hugepage/enabled
+</code></pre></div>
+<h2 id="haproxy-startup">HAProxy startup</h2>
+<p>When HAProxy is enabled, it will attempt to connect to each announce-service of each redis replica instance in its init container before starting.
+It will fail if announce-service IP is not available fast enough (10 seconds max by announce-service).
+A such case could happen if the orchestator is pending the nomination of redis pods.
+Risk is limited because announce-service is using <code>publishNotReadyAddresses: true</code>, although, in such case, HAProxy pod will be rescheduled afterward by the orchestrator.</p>
+<p>PodDisruptionBudgets are not configured by default, you may need to set the <code>haproxy.podDisruptionBudget</code> parameter in values.yaml to enable it.</p>
+<h2 id="network-policies">Network policies</h2>
+<p>If <code>networkPolicy.enabled</code> is set to <code>true</code>, then a <code>NetworkPolicy</code> resource is created with default rules to allow inter-Redis and Sentinel connectivity.
+This is a requirement for Redis Pods to come up successfully.</p>
+<p>You will need to define <code>ingressRules</code> to permit your application connectivity to Redis.
+The <code>selectors</code> block should be in the format of a <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a>.
+Templating is also supported in the selectors.
+See such a configuration below.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">networkPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">ingressRules</span><span class="p p-Indicator">:</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">selectors</span><span class="p">:</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">          </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-redis-client-namespace</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="nt">podSelector</span><span class="p">:</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">          </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">            </span><span class="c1"># template example</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">            </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">              </span><span class="no">{{- .App.Name }}</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">      </span><span class="c1">## ports block is optional (defaults to below), define the block to override the defaults</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">      </span><span class="c1"># ports:</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">      </span><span class="c1">#   - port: 6379</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">      </span><span class="c1">#     protocol: TCP</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">      </span><span class="c1">#   - port: 26379</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">      </span><span class="c1">#     protocol: TCP</span>
+</code></pre></div>
+<p>Should your Pod require additional egress rules, define them in a <code>egressRules</code> key which is structured identically to an <code>ingressRules</code> key.</p>
+<h2 id="sentinel-and-redis-server-split-brain-detection">Sentinel and redis server split brain detection</h2>
+<p>Under not entirely known yet circumstances redis sentinel and its corresponding redis server reach a condition that this chart authors call "split brain" (for short). The observed behaviour is the following: the sentinel switches to the new re-elected master, but does not switch its redis server. Majority of original discussion on the problem has happened at the #121.</p>
+<p>The proposed solution is currently implemented as a sidecar container that runs a bash script with the following logic:</p>
+<ol>
+<li>At intervals defined by splitBrainDetection.interval, the sidecar checks which node is recognized as master by Sentinel.</li>
+<li>If the current pod is the master according to Sentinel, it verifies that the local Redis server is also running as master.</li>
+<li>If the current pod is not the master, it ensures the local Redis server is replicating from the correct master node.</li>
+<li>If any of these checks fail, the sidecar will retry the check at intervals defined by splitBrainDetection.retryInterval.</li>
+<li>If the checks continue to fail after the retry attempts, the sidecar triggers a reinitialization: it regenerates the Redis configuration and instructs the Redis server to shut down. Kubernetes will then automatically restart the container.</li>
+</ol>
+<h1 id="change-log">Change Log</h1>
+<h2 id="4149-potential-breaking-change">4.14.9 - ** POTENTIAL BREAKING CHANGE. **</h2>
+<p>Introduced the ability to change the Haproxy Deployment container pod
+- Container port in redis-haproxy-deployment.yam has been changed. Was <strong>redis.port</strong> To <strong>haproxy.containerPort</strong>. Default value is 6379.
+- Port in redis-haproxy-service.yaml has been changed. Was <strong>redis.port</strong> To <strong>haproxy.servicePort</strong>. Default value is 6379.</p>
+<h2 id="4210-breaking-changes-kubernetes-deprecation">4.21.0 - BREAKING CHANGES (Kubernetes Deprecation)</h2>
+<p>This version introduced the deprecation of the PSP and subsequently added fields to the securityContexts that were introduced in Kubernetes v1.19:</p>
+<p>https://kubernetes.io/docs/tutorials/security/seccomp/</p>
+<p>As a result, from this version onwards Kubernetes versions older than 1.19 will fail to install without the removal of <code>.Values.containerSecurityContext.seccompProfile</code> and <code>.Values.haproxy.containerSecurityContext.seccompProfile</code> (If HAProxy is enabled)</p>
+<hr />
+<p>Autogenerated from chart metadata using <a href="https://github.com/norwoodj/helm-docs">helm-docs</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../gotify/" class="md-footer__link md-footer__link--next" aria-label="Next: gotify">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                gotify
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/alexvanderberkel" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.footer", "navigation.instant", "navigation.sections", "navigation.tracking", "navigation.top", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
