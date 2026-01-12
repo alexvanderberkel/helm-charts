@@ -34,6 +34,7 @@ helm delete <chart>
 ## Charts
 
 - [`redis`](https://charts.esseling.photos/charts/redis)
+- [`gotify`](https://charts.esseling.photos/charts/gotify)
 
 
 ## Contributors
