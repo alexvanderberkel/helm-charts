@@ -5,8 +5,8 @@
 ## TL;DR
 
 ```bash
-helm repo add dandydev https://dandydeveloper.github.io/charts
-helm install dandydev/redis-ha
+helm repo add alexvanderberkel https://charts.esseling.photos
+helm install alexvanderberkel/redis-ha
 ```
 
 By default this chart install 3 pods total:
@@ -37,8 +37,8 @@ Starting from version `4.x` HAProxy sidecar prometheus-exporter removed and repl
 To install the chart
 
 ```bash
-helm repo add dandydev https://dandydeveloper.github.io/charts
-helm install dandydev/redis-ha
+helm repo add alexvanderberkel https://charts.esseling.photos
+helm install alexvanderberkel/redis
 ```
 
 The command deploys Redis on the Kubernetes cluster in the default configuration. By default this chart install one master pod containing redis master container and sentinel container along with 2 redis slave pods each containing their own sentinel sidecars. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -355,11 +355,11 @@ The following table lists the configurable parameters of the Redis chart and the
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`. For example,
 
 ```bash
-$ helm repo add dandydev https://dandydeveloper.github.io/charts
+$ helm repo add alexvanderberkel https://charts.esseling.photos
 $ helm install \
   --set image=redis \
   --set tag=5.0.5-alpine \
-    dandydev/redis-ha
+    alexvanderberkel/redis
 ```
 
 The above command sets the Redis server within `default` namespace.
@@ -367,7 +367,7 @@ The above command sets the Redis server within `default` namespace.
 Alternatively, a YAML file that specifies the values for the parameters can be provided while installing the chart. For example,
 
 ```bash
-helm install -f values.yaml dandydev/redis-ha
+helm install -f values.yaml alexvanderberkel/redis
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
