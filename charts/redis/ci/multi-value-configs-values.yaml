@@ -1,5 +1,13 @@
 ---
 ## Testing if muti-valued config is working or not
+## Configured for single-node Kind cluster in CI
+
+# Reduce replicas for single-node cluster
+replicas: 1
+
+# Disable hard anti-affinity for CI testing
+hardAntiAffinity: false
+
 redis:
   config:
     min-replicas-to-write: 1

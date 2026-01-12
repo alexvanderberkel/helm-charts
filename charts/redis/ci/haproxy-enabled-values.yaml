@@ -1,7 +1,17 @@
 ---
 ## Enable HAProxy to manage Load Balancing
+## Configured for single-node Kind cluster in CI
+
+# Reduce replicas for single-node cluster
+replicas: 1
+
+# Disable hard anti-affinity for CI testing
+hardAntiAffinity: false
+
 haproxy:
   enabled: true
+  replicas: 1
+  hardAntiAffinity: false
   annotations:
     any.domain/key: "value"
   serviceAccount:
