@@ -20,6 +20,9 @@ dependencies:
     condition: postgresql.enabled
 sources:
   - https://github.com/gotify/server
+maintainers:
+- email: alex@alex-esseling.de
+  name: alexvanderberkel
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
