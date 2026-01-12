@@ -1,6 +1,6 @@
 # Gotify
 
-<img src="https://raw.githubusercontent.com/gabe565/charts/main/charts/gotify/icon.svg" align="right" width="92" alt="gotify logo">
+<img src="https://raw.githubusercontent.com/alexvanderberkel/charts/main/charts/gotify/icon.svg" align="right" width="92" alt="gotify logo">
 
 ![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
@@ -8,10 +8,10 @@
 
 A simple server for sending and receiving messages in real-time per WebSocket. (Includes a sleek web-ui)
 
-**Homepage:** <https://charts.gabe565.com/charts/gotify/>
+**Homepage:** <https://charts.alexvanderberkel.com/charts/gotify/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
-[here](https://github.com/gabe565/charts/issues/new?assignees=gabe565&labels=bug&template=bug_report.yaml&name=gotify&version=0.4.0)**
+[here](https://github.com/alexvanderberkel/charts/issues/new?assignees=alexvanderberkel&labels=bug&template=bug_report.yaml&name=gotify&version=0.4.0)**
 
 ## Source Code
 
@@ -25,7 +25,7 @@ Kubernetes: `>=1.22.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| <https://bjw-s.github.io/helm-charts> | common | 1.5.1 |
+| <https://bjw-s-labs/.github.io/helm-charts> | common | 1.5.1 |
 | <https://charts.bitnami.com/bitnami> | postgresql | 14.0.5 |
 
 ## Installing the Chart
@@ -35,15 +35,15 @@ To install the chart with the release name `gotify`
 ### OCI (Recommended)
 
 ```console
-helm install gotify oci://ghcr.io/gabe565/charts/gotify
+helm install gotify oci://ghcr.io/alexvanderberkel/charts/gotify
 ```
 
 ### Traditional
 
 ```console
-helm repo add gabe565 https://charts.gabe565.com
+helm repo add alexvanderkel https://charts.esseling.photos
 helm repo update
-helm install gotify gabe565/gotify
+helm install gotify alexvanderberkel/gotify
 ```
 
 ## Uninstalling the Chart
@@ -59,20 +59,20 @@ The command removes all the Kubernetes components associated with the chart **in
 ## Configuration
 
 Read through the [values.yaml](./values.yaml) file. It has several commented out suggested values.
-Other values may be used from the [values.yaml](https://github.com/bjw-s/helm-charts/tree/a081de5/charts/library/common/values.yaml) from the [bjw-s common library](https://github.com/bjw-s/helm-charts/tree/a081de5/charts/library/common).
+Other values may be used from the [values.yaml](https://github.com/bjw-s-labs//helm-charts/tree/a081de5/charts/library/common/values.yaml) from the [bjw-s common library](https://github.com/bjw-s-labs//helm-charts/tree/a081de5/charts/library/common).
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm install`.
 
 ```console
 helm install gotify \
   --set env.TZ="America/New York" \
-    gabe565/gotify
+    alexvanderberkel/gotify
 ```
 
 Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart.
 
 ```console
-helm install gotify gabe565/gotify -f values.yaml
+helm install gotify alexvanderberkel/gotify -f values.yaml
 ```
 
 ## Custom configuration
@@ -81,7 +81,7 @@ N/A
 
 ## Values
 
-**Important**: When deploying an application Helm chart you can add more values from the bjw-s common library chart [here](https://github.com/bjw-s/helm-charts/tree/a081de5/charts/library/common)
+**Important**: When deploying an application Helm chart you can add more values from the bjw-s common library chart [here](https://github.com/bjw-s-labs//helm-charts/tree/a081de5/charts/library/common)
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
