@@ -8,7 +8,7 @@
 
 A simple server for sending and receiving messages in real-time per WebSocket. (Includes a sleek web-ui)
 
-**Homepage:** <https://charts.alexvanderberkel.com/charts/gotify/>
+**Homepage:** <https://charts.esseling.photos/charts/gotify/>
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised
 [here](https://github.com/alexvanderberkel/charts/issues/new?assignees=alexvanderberkel&labels=bug&template=bug_report.yaml&name=gotify&version=0.4.1**
