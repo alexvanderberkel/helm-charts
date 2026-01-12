@@ -2,7 +2,7 @@ apiVersion: v2
 name: gotify
 description: A simple server for sending and receiving messages in real-time per WebSocket. (Includes a sleek web-ui)
 home: https://charts.esseling.photos/charts/gotify/
-icon: https://raw.githubusercontent.com/alexvanderberkel/charts/main/charts/gotify/icon.svg
+icon: https://raw.githubusercontent.com/alexvanderberkel/helm-charts/refs/heads/main/charts/gotify/icon.svg
 type: application
 version: 0.4.1
 # renovate datasource=docker depName=ghcr.io/gotify/server
