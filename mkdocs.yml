@@ -46,10 +46,9 @@ theme:
 # navigation
 nav:
   - Introduction: index.md
-  - Charts:
-      - paperless: charts/paperless.md
+  - Charts:      
       - redis: charts/redis.md
-      - fritzbox-exporter: charts/fritzbox-exporter.md
+      - gotify: charts/gotify.md
 
 # socials
 extra:
