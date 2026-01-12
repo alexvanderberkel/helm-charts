@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/alexvanderberkel/helm-charts/refs/heads/main/charts/gotify/icon.svg" align="right" width="92" alt="gotify logo">
 
-![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat)
+![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.0-informational?style=flat)
 ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat)
 ![AppVersion: 2.6.1](https://img.shields.io/badge/AppVersion-2.6.1-informational?style=flat)
 
