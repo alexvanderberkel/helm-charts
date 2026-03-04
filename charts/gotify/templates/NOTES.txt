@@ -1,1 +1,9 @@
-{{- include "bjw-s.common.lib.chart.notes" . -}}
+{{- $releaseName := .Release.Name -}}
+{{- $releaseNamespace := .Release.Namespace -}}
+Gotify has been deployed successfully!
+
+Release name: {{ $releaseName }}
+Namespace:    {{ $releaseNamespace }}
+
+To get the application URL, run:
+  kubectl get svc -n {{ $releaseNamespace }} {{ $releaseName }}
