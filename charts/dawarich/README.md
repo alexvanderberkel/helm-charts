@@ -30,9 +30,9 @@ helm install dawarich oci://ghcr.io/cogitri/charts/dawarich
 ### Traditional
 
 ```console
-helm repo add cogitri https://charts.cogitri.dev
+helm repo add alexvanderberkel https://charts.esseling.photos
 helm repo update
-helm install dawarich cogitri/dawarich
+helm install dawarich alexvanderberkel/dawarich
 ```
 
 ## Values
