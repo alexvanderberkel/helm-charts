@@ -13,3 +13,6 @@ dependencies:
     alias: redis
 sources:
   - https://dawarich.app
+maintainers:
+- email: alex@alex-esseling.de
+  name: alexvanderberkel  
