@@ -74,4 +74,3 @@ persistence:
     # storageClass: ""
     # accessMode: ReadWriteOnce
     # size: 1Gi
-
