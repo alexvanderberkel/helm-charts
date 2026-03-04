@@ -3,3 +3,4 @@ target-branch: main
 helm-extra-args: --timeout 600s
 chart-repos:
   - bjw-s=https://bjw-s-labs.github.io/helm-charts
+  - dandydeveloper=https://dandydeveloper.github.io/charts
