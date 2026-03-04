@@ -1,8 +1,8 @@
 #
 # IMPORTANT NOTE
 #
-# This chart inherits from our common library chart. You can check the default values/options here:
-# https://github.com/bjw-s/helm-charts/blob/a081de5/charts/library/common/values.yaml
+# This chart inherits from the bjw-s common library chart (v4).
+# https://github.com/bjw-s-labs/helm-charts/tree/main/charts/library/common
 #
 
 image:
@@ -11,7 +11,7 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
   # -- image tag
-  tag: 2.9.0
+  tag: 2.8.0
 
 # -- Environment variables. [[ref]](https://gotify.net/docs/config#environment-variables)
 # @default -- See [values.yaml](./values.yaml)
@@ -65,17 +65,3 @@ podSecurityContext:
   runAsGroup: 65534
   # -- Volume binds will be granted to `nobody` group
   fsGroup: 65534
-
-# -- Enable and configure postgresql database subchart under this key.
-#    [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/postgresql)
-# @default -- See [values.yaml](./values.yaml)
-postgresql:
-  enabled: false
-  auth:
-    database: gotify
-    postgresPassword: changeme
-  primary:
-    persistence:
-      enabled: false
-      # storageClass: ""
-      # size: 8Gi
