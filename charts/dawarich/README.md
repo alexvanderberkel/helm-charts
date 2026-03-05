@@ -24,7 +24,7 @@ To install the chart with the release name `dawarich`
 ### OCI (Recommended)
 
 ```console
-helm install dawarich oci://ghcr.io/cogitri/charts/dawarich
+helm install dawarich oci://ghcr.io/alexvanderberkel/charts/dawarich
 ```
 
 ### Traditional
