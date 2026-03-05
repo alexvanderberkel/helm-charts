@@ -49,6 +49,7 @@ nav:
   - Charts:      
       - redis: charts/redis.md
       - gotify: charts/gotify.md
+      - dawarich: charts/dawarich.md
 
 # socials
 extra:
