@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://charts.esseling.photos/</loc>
+         <lastmod>2026-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://charts.esseling.photos/LICENSE/</loc>
+         <lastmod>2026-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://charts.esseling.photos/charts/base/</loc>
+         <lastmod>2026-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://charts.esseling.photos/charts/dawarich/</loc>
+         <lastmod>2026-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://charts.esseling.photos/charts/gotify/</loc>
+         <lastmod>2026-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://charts.esseling.photos/charts/redis/</loc>
+         <lastmod>2026-03-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
