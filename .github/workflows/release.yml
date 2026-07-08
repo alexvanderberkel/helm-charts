@@ -60,13 +60,13 @@ jobs:
             exit 0
           fi
 
-          chart_dirs=$(printf "%s\n" "$changed_files" | cut -d/ -f1-2 | sort -u)
-          changed_charts=false
+          chart_dirs=$(printf "%s\n" "$changed_files" | awk -F/ '/^charts\/[^/]+\// { print $1 "/" $2 }' | sort -u)
+          changed_charts='false'
           while IFS= read -r chart_dir; do
             [ -z "$chart_dir" ] && continue
             [ ! -f "$chart_dir/Chart.yaml" ] && continue
             helm package --dependency-update "$chart_dir" --destination .cr-release-packages
-            changed_charts=true
+            changed_charts='true'
           done <<< "$chart_dirs"
 
           echo "changed_charts=$changed_charts" >> "$GITHUB_OUTPUT"
