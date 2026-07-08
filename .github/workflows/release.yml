@@ -39,18 +39,44 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      # deploy charts to github pages
-      - uses: helm/chart-releaser-action@v1.7.0
-        id: cr
-        env:
-          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CR_GENERATE_RELEASE_NOTES: true
-          CR_SKIP_EXISTING: true
+      # package changed charts
+      - name: Package changed charts
+        id: package
+        shell: bash
+        run: |
+          mkdir -p .cr-release-packages
+          # git's null SHA is sent as github.event.before on the first push to a branch
+          null_sha="0000000000000000000000000000000000000000"
+          before="${{ github.event.before }}"
+          after="${{ github.sha }}"
+
+          if [ "$before" = "$null_sha" ]; then
+            # first push: treat all charts as changed
+            changed_files=$(git ls-tree -r --name-only "$after" -- charts/)
+          else
+            changed_files=$(git diff --name-only "$before" "$after" -- charts/)
+          fi
+
+          if [ -z "$changed_files" ]; then
+            echo "changed_charts=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # extract unique chart roots (charts/<name>) from changed file paths
+          chart_dirs=$(printf "%s\n" "$changed_files" | awk -F/ '/^charts\/[^/]+\// { print $1 "/" $2 }' | sort -u)
+          changed_charts='false'
+          while IFS= read -r chart_dir; do
+            [ -z "$chart_dir" ] && continue
+            [ ! -f "$chart_dir/Chart.yaml" ] && continue
+            helm package --dependency-update "$chart_dir" --destination .cr-release-packages
+            changed_charts='true'
+          done <<< "$chart_dirs"
+
+          echo "changed_charts=$changed_charts" >> "$GITHUB_OUTPUT"
 
       # setup access to container registry
       - uses: docker/login-action@v3
-        if: ${{ steps.cr.outputs.changed_charts }}
+        if: ${{ steps.package.outputs.changed_charts == 'true' }}
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -58,7 +84,7 @@ jobs:
 
       # push charts to container registry
       - name: Push charts to container registry
-        if: ${{ steps.cr.outputs.changed_charts }}
+        if: ${{ steps.package.outputs.changed_charts == 'true' }}
         run: |
           for CHART in .cr-release-packages/*; do
             if [ -z "${CHART:-}" ]; then break; fi
