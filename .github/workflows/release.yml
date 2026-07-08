@@ -7,6 +7,12 @@ on:
     paths:
       - "charts/**"
 
+# creating GitHub releases and deploying to the gh-pages branch need write
+# access to contents; pushing chart packages to ghcr.io needs packages write
+permissions:
+  contents: write
+  packages: write
+
 jobs:
   release:
     name: Release Charts
@@ -89,6 +95,59 @@ jobs:
           for CHART in .cr-release-packages/*; do
             if [ -z "${CHART:-}" ]; then break; fi
             helm push "${CHART}" oci://ghcr.io/${{ github.repository }}
+          done
+
+      # create a github release per packaged chart and attach the package as an
+      # asset. to stay compatible with repositories that have "immutable
+      # releases" enabled, the release is created as a draft (mutable), the
+      # asset is uploaded, and only then is the release published.
+      - name: Create GitHub releases
+        if: ${{ steps.package.outputs.changed_charts == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          for pkg in .cr-release-packages/*.tgz; do
+            base="$(basename "$pkg" .tgz)"
+            if gh release view "$base" >/dev/null 2>&1; then
+              echo "Release ${base} already exists; skipping."
+              continue
+            fi
+            echo "Creating release ${base}..."
+            gh release create "$base" "$pkg" \
+              --title "$base" \
+              --target "$GITHUB_SHA" \
+              --generate-notes \
+              --draft
+            gh release edit "$base" --draft=false --latest
+          done
+
+      # (re)generate the helm repo index that is served over HTTP at the pages
+      # site. the currently published index is used as the merge base so that
+      # existing chart versions are preserved, and download urls point at the
+      # matching github release assets. the resulting index is picked up and
+      # published to docs/index.yaml by the "Create pages for docs" step below.
+      - name: Update Helm repo index
+        if: ${{ steps.package.outputs.changed_charts == 'true' }}
+        env:
+          PROD_DOMAIN: ${{ secrets.PROD_DOMAIN }}
+        run: |
+          mkdir -p .cr-index
+          # seed with the currently published index so existing versions persist
+          # (ignore failure on the very first run when nothing is published yet)
+          curl -fsSL "https://${PROD_DOMAIN}/index.yaml" -o .cr-index/index.yaml || rm -f .cr-index/index.yaml
+          for pkg in .cr-release-packages/*.tgz; do
+            base="$(basename "$pkg" .tgz)"
+            url="https://github.com/${GITHUB_REPOSITORY}/releases/download/${base}"
+            work="$(mktemp -d)"
+            cp "$pkg" "$work/"
+            if [ -s .cr-index/index.yaml ]; then
+              helm repo index "$work" --url "$url" --merge .cr-index/index.yaml
+            else
+              helm repo index "$work" --url "$url"
+            fi
+            cp "$work/index.yaml" .cr-index/index.yaml
+            rm -rf "$work"
           done
 
       # create pages for docs
