@@ -45,13 +45,19 @@ jobs:
         shell: bash
         run: |
           mkdir -p .cr-release-packages
+          null_sha="0000000000000000000000000000000000000000"
           before="${{ github.event.before }}"
           after="${{ github.sha }}"
 
-          if [ "$before" = "0000000000000000000000000000000000000000" ]; then
+          if [ "$before" = "$null_sha" ]; then
             changed_files=$(git ls-tree -r --name-only "$after" -- charts/)
           else
             changed_files=$(git diff --name-only "$before" "$after" -- charts/)
+          fi
+
+          if [ -z "$changed_files" ]; then
+            echo "changed_charts=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
 
           chart_dirs=$(printf "%s\n" "$changed_files" | cut -d/ -f1-2 | sort -u)
