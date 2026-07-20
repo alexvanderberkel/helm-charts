@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
 
       # prepare
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
 
       # setup helm
       - uses: azure/setup-helm@v5.0.1
