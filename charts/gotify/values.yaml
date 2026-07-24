@@ -15,7 +15,7 @@ controllers:
           # -- image pull policy
           pullPolicy: IfNotPresent
           # -- image tag
-          tag: 2.9.1
+          tag: 3.0.0
 
         # -- Environment variables. [[ref]](https://gotify.net/docs/config#environment-variables)
         # @default -- See [values.yaml](./values.yaml)
@@ -67,10 +67,13 @@ ingress:
 # @default -- See [values.yaml](./values.yaml)
 persistence:
   data:
-    enabled: false
+    enabled: true
+    type: emptyDir
     globalMounts:
       - path: /app/data
-    retain: true
+    # -- To use a persistent volume instead of emptyDir, set type to persistentVolumeClaim and configure the following:
+    # type: persistentVolumeClaim
+    # retain: true
     # storageClass: ""
     # accessMode: ReadWriteOnce
     # size: 1Gi
