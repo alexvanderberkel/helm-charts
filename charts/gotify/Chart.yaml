@@ -4,9 +4,9 @@ description: A simple server for sending and receiving messages in real-time per
 home: https://charts.esseling.photos/charts/gotify/
 icon: https://raw.githubusercontent.com/alexvanderberkel/helm-charts/refs/heads/main/charts/gotify/icon.svg
 type: application
-version: 0.4.2
+version: 0.5.0
 # renovate datasource=docker depName=ghcr.io/gotify/server
-appVersion: 2.9.1
+appVersion: 3.0.0
 kubeVersion: ">=1.22.0-0"
 keywords:
   - notifications
@@ -22,7 +22,9 @@ maintainers:
 annotations:
   artifacthub.io/changes: |-
     - kind: changed
-      description: Update ghcr.io/gotify/server docker tag to v2.9.1
+      description: Update ghcr.io/gotify/server docker tag to v3.0.0
+    - kind: fixed
+      description: Use emptyDir volume for data directory to fix permission denied error with Gotify 3.0.0
   artifacthub.io/links: |-
     - name: App Source
       url: https://github.com/gotify/server
