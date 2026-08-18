@@ -32,7 +32,7 @@ jobs:
       - uses: arduino/setup-task@v3.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          version: v3.52.0
+          version: 3.52.0
 
       # setup cache for social cards
       - uses: actions/cache@v6
