@@ -1,4 +1,21 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"]
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track appVersion in Chart.yaml via the # renovate datasource=... depName=... annotation",
+      "managerFilePatterns": ["/(^|/)Chart\\.yaml$/"],
+      "matchStrings": [
+        "#\\s*renovate:?\\s*datasource=(?<datasource>.*?)\\s*depName=(?<depName>.*?)\\s*\\n\\s*appVersion:\\s*\"?(?<currentValue>[\\w.-]+)\"?"
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["custom.regex"],
+      "matchFileNames": ["charts/**/Chart.yaml"],
+      "bumpVersion": "patch"
+    }
+  ]
 }
