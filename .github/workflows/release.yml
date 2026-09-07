@@ -157,8 +157,15 @@ jobs:
         env:
           PROD_DOMAIN: ${{ secrets.PROD_DOMAIN }}
 
-      # deploy docs
-      - uses: mhausenblas/mkdocs-deploy-gh-pages@d77dd03172e96abbcdb081d8c948224762033653 # maintenance release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REQUIREMENTS: docs/requirements.txt
+      # setup python for mkdocs
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.x"
+
+      # install mkdocs-material and any additional plugins
+      - name: Install MkDocs dependencies
+        run: pip install mkdocs-material -r docs/requirements.txt
+
+      # build and push the site to the gh-pages branch
+      - name: Deploy docs
+        run: mkdocs gh-deploy --force --clean
