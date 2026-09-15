@@ -184,15 +184,7 @@ Create the name of the service account to use
 - name: DATABASE_NAME
   value: "{{ .auth.database }}"
 - name: DATABASE_USERNAME
-  valueFrom:
-    secretKeyRef:
-      {{- if .auth.existingSecret }}
-      name: {{ .auth.existingSecret }}
-      key: username
-      {{- else }}
-      name: {{ include "dawarich.fullname" $ }}
-      key: postgresUsername
-      {{- end }}
+  value: "{{ .auth.username }}"
 - name: DATABASE_PASSWORD
   valueFrom:
     secretKeyRef:
@@ -335,13 +327,7 @@ periodSeconds: 10
 failureThreshold: 10
 {{- end }}
 
-{{- define "dawarich.postgresqlReadyCommand" }}
-- sh
-- -c
-- psql -h 127.0.0.1 -p {{ .Values.postgresql.port }} -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c 'SELECT 1' >/dev/null
-{{- end }}
-
-{{- define "dawarich.postgresqlLivenessCommand" }}
+{{- define "dawarich.postgresqlProbeCommand" }}
 - sh
 - -c
 - pg_isready -h 127.0.0.1 -p {{ .Values.postgresql.port }} -U "$POSTGRES_USER" -d "$POSTGRES_DB"
