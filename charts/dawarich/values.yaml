@@ -179,7 +179,7 @@ postgresql:
   auth:
     database: dawarich
     # When bundled PostgreSQL is used and this value is left as `changeme`,
-    # the chart will generate a random password and store it in the release secret.
+    # rendering will fail. Set a custom password or use existingSecret.
     password: changeme
     username: dawarich
     existingSecret: null
