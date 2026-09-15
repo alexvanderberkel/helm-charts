@@ -183,6 +183,10 @@ postgresql:
     username: dawarich
     postgresPassword: changeme
     existingSecret: null
+    secretKeys:
+      usernameKey: username
+      userPasswordKey: password
+      adminPasswordKey: postgres-password
 
 redis:
   enabled: true

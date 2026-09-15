@@ -188,7 +188,7 @@ Create the name of the service account to use
   valueFrom:
     secretKeyRef:
       name: {{ .auth.existingSecret }}
-      key: username
+      key: {{ .auth.secretKeys.usernameKey | default "username" }}
   {{- else }}
   value: "{{ .auth.username }}"
   {{- end }}
