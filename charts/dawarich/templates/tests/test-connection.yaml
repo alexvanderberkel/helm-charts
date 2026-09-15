@@ -11,5 +11,11 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "dawarich.fullname" . }}:{{ .Values.service.port }}']
+      # the Host header must match APPLICATION_HOSTS, otherwise Rails host authorization returns 403
+      args:
+        - '--header'
+        - 'Host: {{ .Values.dawarich.hosts | first }}'
+        - '-O'
+        - '/dev/null'
+        - 'http://{{ include "dawarich.fullname" . }}:{{ .Values.service.port }}/api/v1/health'
   restartPolicy: Never

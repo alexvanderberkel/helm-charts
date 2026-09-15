@@ -157,15 +157,35 @@ persistence:
     size: 5Gi
 
 postgresql:
-  host: '{{ $.Release.Name }}-postgresql'
+  enabled: true
+  # External PostgreSQL/PostGIS host. When set, the external host is used and
+  # the bundled PostgreSQL StatefulSet is not deployed.
+  host: ""
   port: 5432
+  # The bundled database is initialized only once per persistent volume.
+  # Changing auth.username/auth.password later will not rewrite an existing database.
+  image:
+    repository: docker.io/postgis/postgis
+    tag: "17-3.5"
+    pullPolicy: IfNotPresent
+  persistence:
+    enabled: true
+    existingClaim: ""
+    annotations: []
+    accessMode: "ReadWriteOnce"
+    storageClass: ""
+    size: 8Gi
 
   auth:
     database: dawarich
+    # When bundled PostgreSQL is used and this value is left as `changeme`,
+    # rendering will fail. Set a custom password or use existingSecret.
     password: changeme
     username: dawarich
-    postgresPassword: changeme
     existingSecret: null
+    secretKeys:
+      usernameKey: username
+      userPasswordKey: password
 
 redis:
   enabled: true

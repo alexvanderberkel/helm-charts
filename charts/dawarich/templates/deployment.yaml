@@ -35,7 +35,7 @@ spec:
         {{ include "dawarich.initContainers" . | nindent 8 }}
         {{- if .Values.postgresql.enabled }}
         - name: postgis-init
-          image: bitnami/postgresql:latest
+          image: "{{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}"
           command:
             - /bin/sh
             - -c
@@ -44,24 +44,26 @@ spec:
               psql -d {{ .Values.postgresql.auth.database }} -c "CREATE EXTENSION IF NOT EXISTS postgis;"
           env:
             - name: PGHOST
-              value: {{ include "dawarich.fullname" . }}-postgresql
+              value: {{ include "dawarich.postgresqlHost" . | quote }}
             - name: PGUSER
-              value: postgres
+              {{- if .Values.postgresql.auth.existingSecret }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.auth.existingSecret }}
+                  key: {{ .Values.postgresql.auth.secretKeys.usernameKey | default "username" }}
+              {{- else }}
+              value: {{ .Values.postgresql.auth.username | quote }}
+              {{- end }}
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{- if .Values.postgresql.auth.existingSecret }}
-                    {{ .Values.postgresql.auth.existingSecret }}
+                  {{- if .Values.postgresql.auth.existingSecret }}
+                  name: {{ .Values.postgresql.auth.existingSecret }}
+                  key: {{ .Values.postgresql.auth.secretKeys.userPasswordKey | default "password" }}
                   {{- else }}
-                    {{ $.Release.Name }}-postgresql
+                  name: {{ include "dawarich.fullname" . }}
+                  key: postgresPassword
                   {{- end }}
-                  key: {{- if .Values.postgresql.auth.secretKeys.adminPasswordKey }}
-                    {{ .Values.postgresql.auth.secretKeys.adminPasswordKey }}
-                  {{- else }}
-                    postgres-password
-                  {{- end }}
-            - name: DB_USER
-              value: {{ .Values.postgresql.auth.username }}
         {{- end }}  
       containers:
         - name: {{ .Chart.Name }}

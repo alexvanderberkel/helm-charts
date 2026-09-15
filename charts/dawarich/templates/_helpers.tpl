@@ -91,6 +91,28 @@ Create the name of the service account to use
 {{- default (printf "%s-postgres-secret" (include "dawarich.fullname" .)) .Values.dawarich.postgres.existingSecret }}
 {{- end }}
 
+{{- define "dawarich.postgresqlName" -}}
+{{- printf "%s-postgresql" (include "dawarich.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{- define "dawarich.postgresqlBundledEnabled" -}}
+{{- if and .Values.postgresql.enabled (not .Values.postgresql.host) -}}
+true
+{{- else -}}
+false
+{{- end -}}
+{{- end }}
+
+{{- define "dawarich.postgresqlHost" -}}
+{{- if .Values.postgresql.host -}}
+{{- .Values.postgresql.host -}}
+{{- else if .Values.postgresql.enabled -}}
+{{- include "dawarich.postgresqlName" . -}}
+{{- else -}}
+{{- required "postgresql.host is required when postgresql.enabled=false" .Values.postgresql.host -}}
+{{- end -}}
+{{- end }}
+
 {{- define "dawarich.volumes" -}}
 {{- if .Values.persistence.public.enabled }}
 - name: public
@@ -166,27 +188,26 @@ Create the name of the service account to use
   value: {{ join "," .Values.dawarich.hosts }}
 {{- with .Values.postgresql }}
 - name: DATABASE_HOST
-  value: "{{ tpl $.Values.postgresql.host $ }}"
+  value: "{{ include "dawarich.postgresqlHost" $ }}"
 - name: DATABASE_PORT
   value: "{{ .port }}"
 - name: DATABASE_NAME
   value: "{{ .auth.database }}"
 - name: DATABASE_USERNAME
+  {{- if .auth.existingSecret }}
   valueFrom:
     secretKeyRef:
-      {{- if .auth.existingSecret }}
       name: {{ .auth.existingSecret }}
-      key: username
-      {{- else }}
-      name: {{ include "dawarich.fullname" $ }}
-      key: postgresUsername
-      {{- end }}
+      key: {{ .auth.secretKeys.usernameKey | default "username" }}
+  {{- else }}
+  value: "{{ .auth.username }}"
+  {{- end }}
 - name: DATABASE_PASSWORD
   valueFrom:
     secretKeyRef:
       {{- if .auth.existingSecret }}
       name: {{ .auth.existingSecret }}
-      key: password
+      key: {{ .auth.secretKeys.userPasswordKey | default "password" }}
       {{- else }}
       name: {{ include "dawarich.fullname" $ }}
       key: postgresPassword
@@ -283,13 +304,34 @@ Create the name of the service account to use
 
 {{- define "dawarich.initContainers" }}
 - name: wait-for-postgres
-  image: busybox
+  image: "{{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}"
   env:
     - name: DATABASE_HOST
-      value: "{{ tpl .Values.postgresql.host . }}"
+      value: "{{ include "dawarich.postgresqlHost" . }}"
     - name: DATABASE_PORT
       value: "{{ .Values.postgresql.port }}"
-  command: ['sh', '-c', 'until nc -z "$DATABASE_HOST" "$DATABASE_PORT"; do echo waiting for postgres; sleep 2; done;']
+    - name: DATABASE_NAME
+      value: "{{ .Values.postgresql.auth.database }}"
+    - name: DATABASE_USERNAME
+      {{- if .Values.postgresql.auth.existingSecret }}
+      valueFrom:
+        secretKeyRef:
+          name: {{ .Values.postgresql.auth.existingSecret }}
+          key: {{ .Values.postgresql.auth.secretKeys.usernameKey | default "username" }}
+      {{- else }}
+      value: "{{ .Values.postgresql.auth.username }}"
+      {{- end }}
+    - name: DATABASE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          {{- if .Values.postgresql.auth.existingSecret }}
+          name: {{ .Values.postgresql.auth.existingSecret }}
+          key: {{ .Values.postgresql.auth.secretKeys.userPasswordKey | default "password" }}
+          {{- else }}
+          name: {{ include "dawarich.fullname" . }}
+          key: postgresPassword
+          {{- end }}
+  command: ['sh', '-c', 'until PGPASSWORD="$DATABASE_PASSWORD" psql -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "$DATABASE_USERNAME" -d "$DATABASE_NAME" -c "SELECT 1" >/dev/null 2>&1; do echo waiting for postgres; sleep 2; done;']
 {{- end }}
 
 
@@ -321,4 +363,10 @@ httpGet:
 initialDelaySeconds: 30
 periodSeconds: 10
 failureThreshold: 10
+{{- end }}
+
+{{- define "dawarich.postgresqlProbeCommand" }}
+- sh
+- -c
+- pg_isready -h 127.0.0.1 -p {{ .Values.postgresql.port }} -U "$POSTGRES_USER" -d "$POSTGRES_DB"
 {{- end }}
