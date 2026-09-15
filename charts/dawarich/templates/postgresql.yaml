@@ -1,8 +1,31 @@
 {{- if .Values.postgresql.enabled }}
+{{- if and .Values.postgresql.persistence.enabled (not .Values.postgresql.persistence.existingClaim) }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "dawarich.postgresqlName" . }}
+  labels:
+    {{- include "dawarich.labels" . | nindent 4 }}
+    app.kubernetes.io/component: postgresql
+  {{- with .Values.postgresql.persistence.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  accessModes:
+    - {{ .Values.postgresql.persistence.accessMode | quote }}
+  resources:
+    requests:
+      storage: {{ .Values.postgresql.persistence.size | quote }}
+  {{- with .Values.postgresql.persistence.storageClass }}
+  storageClassName: {{ . | quote }}
+  {{- end }}
+---
+{{- end }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}-postgresql
+  name: {{ include "dawarich.postgresqlName" . }}
   labels:
     {{- include "dawarich.labels" . | nindent 4 }}
     app.kubernetes.io/component: postgresql
@@ -19,7 +42,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-postgresql
+  name: {{ include "dawarich.postgresqlName" . }}
   labels:
     {{- include "dawarich.labels" . | nindent 4 }}
     app.kubernetes.io/component: postgresql
@@ -70,5 +93,10 @@ spec:
               mountPath: /var/lib/postgresql/data
       volumes:
         - name: postgresql-data
+          {{- if .Values.postgresql.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ default (include "dawarich.postgresqlName" .) .Values.postgresql.persistence.existingClaim }}
+          {{- else }}
           emptyDir: {}
+          {{- end }}
 {{- end }}

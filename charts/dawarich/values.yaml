@@ -158,12 +158,19 @@ persistence:
 
 postgresql:
   enabled: true
-  host: '{{ $.Release.Name }}-postgresql'
+  host: '{{ include "dawarich.postgresqlName" . }}'
   port: 5432
   image:
     repository: docker.io/postgis/postgis
     tag: "17-3.5"
     pullPolicy: IfNotPresent
+  persistence:
+    enabled: true
+    existingClaim: ""
+    annotations: []
+    accessMode: "ReadWriteOnce"
+    storageClass: ""
+    size: 8Gi
 
   auth:
     database: dawarich

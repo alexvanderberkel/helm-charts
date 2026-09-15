@@ -91,6 +91,10 @@ Create the name of the service account to use
 {{- default (printf "%s-postgres-secret" (include "dawarich.fullname" .)) .Values.dawarich.postgres.existingSecret }}
 {{- end }}
 
+{{- define "dawarich.postgresqlName" -}}
+{{- printf "%s-postgresql" (include "dawarich.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
 {{- define "dawarich.volumes" -}}
 {{- if .Values.persistence.public.enabled }}
 - name: public
