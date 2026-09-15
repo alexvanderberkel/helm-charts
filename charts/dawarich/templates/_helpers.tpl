@@ -95,6 +95,14 @@ Create the name of the service account to use
 {{- printf "%s-postgresql" (include "dawarich.fullname" .) | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
+{{- define "dawarich.postgresqlHost" -}}
+{{- if .Values.postgresql.enabled -}}
+{{- include "dawarich.postgresqlName" . -}}
+{{- else -}}
+{{- .Values.postgresql.host -}}
+{{- end -}}
+{{- end }}
+
 {{- define "dawarich.volumes" -}}
 {{- if .Values.persistence.public.enabled }}
 - name: public
@@ -170,7 +178,7 @@ Create the name of the service account to use
   value: {{ join "," .Values.dawarich.hosts }}
 {{- with .Values.postgresql }}
 - name: DATABASE_HOST
-  value: "{{ tpl $.Values.postgresql.host $ }}"
+  value: "{{ include "dawarich.postgresqlHost" $ }}"
 - name: DATABASE_PORT
   value: "{{ .port }}"
 - name: DATABASE_NAME
@@ -290,7 +298,7 @@ Create the name of the service account to use
   image: busybox
   env:
     - name: DATABASE_HOST
-      value: "{{ tpl .Values.postgresql.host . }}"
+      value: "{{ include "dawarich.postgresqlHost" . }}"
     - name: DATABASE_PORT
       value: "{{ .Values.postgresql.port }}"
   command: ['sh', '-c', 'until nc -z "$DATABASE_HOST" "$DATABASE_PORT"; do echo waiting for postgres; sleep 2; done;']

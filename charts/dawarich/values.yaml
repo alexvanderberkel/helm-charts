@@ -158,7 +158,8 @@ persistence:
 
 postgresql:
   enabled: true
-  host: '{{ include "dawarich.postgresqlName" . }}'
+  # External PostgreSQL/PostGIS host when postgresql.enabled=false.
+  host: ""
   port: 5432
   # The bundled database is initialized only once per persistent volume.
   # Changing auth.username/auth.password later will not rewrite an existing database.

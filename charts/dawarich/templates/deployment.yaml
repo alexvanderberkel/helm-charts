@@ -44,7 +44,7 @@ spec:
               psql -d {{ .Values.postgresql.auth.database }} -c "CREATE EXTENSION IF NOT EXISTS postgis;"
           env:
             - name: PGHOST
-              value: {{ tpl .Values.postgresql.host . | quote }}
+              value: {{ include "dawarich.postgresqlHost" . | quote }}
             - name: PGUSER
               value: postgres
             - name: PGPASSWORD
