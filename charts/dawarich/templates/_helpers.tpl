@@ -99,7 +99,7 @@ Create the name of the service account to use
 {{- if .Values.postgresql.enabled -}}
 {{- include "dawarich.postgresqlName" . -}}
 {{- else -}}
-{{- .Values.postgresql.host -}}
+{{- required "postgresql.host is required when postgresql.enabled=false" .Values.postgresql.host -}}
 {{- end -}}
 {{- end }}
 
