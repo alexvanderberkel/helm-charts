@@ -86,7 +86,14 @@ spec:
                   name: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.existingSecret }}{{ else }}{{ include "dawarich.fullname" . }}{{ end }}
                   key: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.secretKeys.adminPasswordKey | default "postgres-password" }}{{ else }}postgresAdminPassword{{ end }}
             - name: DAWARICH_DATABASE_USER
+              {{- if .Values.postgresql.auth.existingSecret }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.auth.existingSecret }}
+                  key: {{ .Values.postgresql.auth.secretKeys.usernameKey | default "username" }}
+              {{- else }}
               value: {{ .Values.postgresql.auth.username | quote }}
+              {{- end }}
             - name: DAWARICH_DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -134,7 +141,7 @@ spec:
         - name: postgresql-init
           configMap:
             name: {{ include "dawarich.postgresqlName" . }}-init
-            defaultMode: 365 # 0555
+            defaultMode: 365 # decimal for 0555
   {{- if and .Values.postgresql.persistence.enabled (not .Values.postgresql.persistence.existingClaim) }}
   volumeClaimTemplates:
     - metadata:
