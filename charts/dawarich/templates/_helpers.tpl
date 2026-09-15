@@ -335,7 +335,13 @@ periodSeconds: 10
 failureThreshold: 10
 {{- end }}
 
-{{- define "dawarich.postgresqlProbeCommand" }}
+{{- define "dawarich.postgresqlReadyCommand" }}
+- sh
+- -c
+- psql -h 127.0.0.1 -p {{ .Values.postgresql.port }} -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c 'SELECT 1' >/dev/null
+{{- end }}
+
+{{- define "dawarich.postgresqlLivenessCommand" }}
 - sh
 - -c
 - pg_isready -h 127.0.0.1 -p {{ .Values.postgresql.port }} -U "$POSTGRES_USER" -d "$POSTGRES_DB"

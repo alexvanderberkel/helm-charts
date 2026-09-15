@@ -50,6 +50,7 @@ data:
   01-create-dawarich-user.sh: |
     #!/bin/sh
     set -e
+    # This bootstrap script only runs when the PostgreSQL data directory is first initialized.
     psql -v ON_ERROR_STOP=1 \
       --username "$POSTGRES_USER" \
       --dbname "$POSTGRES_DB" \
@@ -121,19 +122,19 @@ spec:
           readinessProbe:
             exec:
               command:
-                {{- include "dawarich.postgresqlProbeCommand" . | nindent 16 }}
+                {{- include "dawarich.postgresqlReadyCommand" . | nindent 16 }}
             periodSeconds: 10
             failureThreshold: 6
           startupProbe:
             exec:
               command:
-                {{- include "dawarich.postgresqlProbeCommand" . | nindent 16 }}
+                {{- include "dawarich.postgresqlReadyCommand" . | nindent 16 }}
             periodSeconds: 10
             failureThreshold: 30
           livenessProbe:
             exec:
               command:
-                {{- include "dawarich.postgresqlProbeCommand" . | nindent 16 }}
+                {{- include "dawarich.postgresqlLivenessCommand" . | nindent 16 }}
             periodSeconds: 10
             failureThreshold: 6
           volumeMounts:

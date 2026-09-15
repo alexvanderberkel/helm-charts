@@ -15,7 +15,7 @@ Self-hosted alternative to Google Location History
 |----|----------|
 | <https://dandydeveloper.github.io/charts> | redis-ha |
 
-The chart deploys a PostGIS-backed PostgreSQL instance by default. To use an external PostgreSQL/PostGIS instance instead, set `postgresql.enabled=false` and provide the external connection details. When using the bundled database with persistent storage, the initial database user and password are only applied when the database volume is first initialized.
+The chart deploys a PostGIS-backed PostgreSQL instance by default. To use an external PostgreSQL/PostGIS instance instead, set `postgresql.enabled=false`, set `postgresql.host` to your external database hostname, and provide the external connection details. When using the bundled database with persistent storage, the initial database user and password are only applied when the database volume is first initialized.
 
 ## Installing the Chart
 
