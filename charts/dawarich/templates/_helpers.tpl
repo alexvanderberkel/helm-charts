@@ -326,3 +326,11 @@ initialDelaySeconds: 30
 periodSeconds: 10
 failureThreshold: 10
 {{- end }}
+
+{{- define "dawarich.postgresqlProbe" }}
+exec:
+  command:
+    - sh
+    - -c
+    - pg_isready -h 127.0.0.1 -p {{ .Values.postgresql.port }} -U "$POSTGRES_USER" -d "$POSTGRES_DB"
+{{- end }}

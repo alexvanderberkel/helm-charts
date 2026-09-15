@@ -87,6 +87,7 @@ spec:
   template:
     metadata:
       labels:
+        {{- include "dawarich.labels" . | nindent 8 }}
         app.kubernetes.io/component: postgresql
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
@@ -118,17 +119,9 @@ spec:
               containerPort: {{ .Values.postgresql.port }}
               protocol: TCP
           readinessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - pg_isready -h 127.0.0.1 -p {{ .Values.postgresql.port }} -U "$POSTGRES_USER" -d "$POSTGRES_DB"
+            {{- include "dawarich.postgresqlProbe" . | nindent 12 }}
           livenessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - pg_isready -h 127.0.0.1 -p {{ .Values.postgresql.port }} -U "$POSTGRES_USER" -d "$POSTGRES_DB"
+            {{- include "dawarich.postgresqlProbe" . | nindent 12 }}
           volumeMounts:
             - name: postgresql-data
               mountPath: /var/lib/postgresql/data
