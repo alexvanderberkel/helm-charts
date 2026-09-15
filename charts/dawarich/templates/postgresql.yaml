@@ -39,14 +39,46 @@ spec:
     app.kubernetes.io/component: postgresql
     app.kubernetes.io/instance: {{ .Release.Name }}
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "dawarich.postgresqlName" . }}-init
+  labels:
+    {{- include "dawarich.labels" . | nindent 4 }}
+    app.kubernetes.io/component: postgresql
+data:
+  01-create-dawarich-user.sh: |
+    #!/bin/sh
+    set -e
+    psql -v ON_ERROR_STOP=1 \
+      --username "$POSTGRES_USER" \
+      --dbname "$POSTGRES_DB" \
+      --set=db_name="$POSTGRES_DB" \
+      --set=db_user="$DAWARICH_DATABASE_USER" \
+      --set=db_password="$DAWARICH_DATABASE_PASSWORD" <<'EOSQL'
+    DO
+    $$
+    BEGIN
+      IF EXISTS (SELECT 1 FROM pg_catalog.pg_roles WHERE rolname = :'db_user') THEN
+        EXECUTE format('ALTER ROLE %I LOGIN PASSWORD %L', :'db_user', :'db_password');
+      ELSE
+        EXECUTE format('CREATE ROLE %I LOGIN PASSWORD %L', :'db_user', :'db_password');
+      END IF;
+    END
+    $$;
+    SELECT format('GRANT ALL PRIVILEGES ON DATABASE %I TO %I', :'db_name', :'db_user') \gexec
+    SELECT format('ALTER DATABASE %I OWNER TO %I', :'db_name', :'db_user') \gexec
+    EOSQL
+---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "dawarich.postgresqlName" . }}
   labels:
     {{- include "dawarich.labels" . | nindent 4 }}
     app.kubernetes.io/component: postgresql
 spec:
+  serviceName: {{ include "dawarich.postgresqlName" . }}
   replicas: 1
   selector:
     matchLabels:
@@ -66,12 +98,21 @@ spec:
             - name: POSTGRES_DB
               value: {{ .Values.postgresql.auth.database | quote }}
             - name: POSTGRES_USER
-              value: {{ .Values.postgresql.auth.username | quote }}
+              value: postgres
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.existingSecret }}{{ else }}{{ include "dawarich.fullname" . }}{{ end }}
+                  key: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.secretKeys.adminPasswordKey | default "postgres-password" }}{{ else }}postgresAdminPassword{{ end }}
+            - name: DAWARICH_DATABASE_USER
+              value: {{ .Values.postgresql.auth.username | quote }}
+            - name: DAWARICH_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.existingSecret }}{{ else }}{{ include "dawarich.fullname" . }}{{ end }}
                   key: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.secretKeys.userPasswordKey | default "password" }}{{ else }}postgresPassword{{ end }}
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           ports:
             - name: postgresql
               containerPort: {{ .Values.postgresql.port }}
@@ -91,6 +132,9 @@ spec:
           volumeMounts:
             - name: postgresql-data
               mountPath: /var/lib/postgresql/data
+            - name: postgresql-init
+              mountPath: /docker-entrypoint-initdb.d/01-create-dawarich-user.sh
+              subPath: 01-create-dawarich-user.sh
       volumes:
         - name: postgresql-data
           {{- if .Values.postgresql.persistence.enabled }}
@@ -99,4 +143,8 @@ spec:
           {{- else }}
           emptyDir: {}
           {{- end }}
+        - name: postgresql-init
+          configMap:
+            name: {{ include "dawarich.postgresqlName" . }}-init
+            defaultMode: 0555
 {{- end }}
