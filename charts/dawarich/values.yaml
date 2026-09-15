@@ -160,6 +160,8 @@ postgresql:
   enabled: true
   host: '{{ include "dawarich.postgresqlName" . }}'
   port: 5432
+  # The bundled database is initialized only once per persistent volume.
+  # Changing auth.username/auth.password later will not rewrite an existing database.
   image:
     repository: docker.io/postgis/postgis
     tag: "17-3.5"

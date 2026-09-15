@@ -120,6 +120,8 @@ spec:
               protocol: TCP
           readinessProbe:
             {{- include "dawarich.postgresqlProbe" . | nindent 12 }}
+          startupProbe:
+            {{- include "dawarich.postgresqlProbe" . | nindent 12 }}
           livenessProbe:
             {{- include "dawarich.postgresqlProbe" . | nindent 12 }}
           volumeMounts:
