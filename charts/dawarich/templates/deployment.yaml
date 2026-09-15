@@ -44,22 +44,14 @@ spec:
               psql -d {{ .Values.postgresql.auth.database }} -c "CREATE EXTENSION IF NOT EXISTS postgis;"
           env:
             - name: PGHOST
-              value: {{ include "dawarich.fullname" . }}-postgresql
+              value: {{ tpl .Values.postgresql.host . | quote }}
             - name: PGUSER
-              value: postgres
+              value: {{ .Values.postgresql.auth.username | quote }}
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{- if .Values.postgresql.auth.existingSecret }}
-                    {{ .Values.postgresql.auth.existingSecret }}
-                  {{- else }}
-                    {{ $.Release.Name }}-postgresql
-                  {{- end }}
-                  key: {{- if .Values.postgresql.auth.secretKeys.adminPasswordKey }}
-                    {{ .Values.postgresql.auth.secretKeys.adminPasswordKey }}
-                  {{- else }}
-                    postgres-password
-                  {{- end }}
+                  name: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.existingSecret }}{{ else }}{{ include "dawarich.fullname" . }}{{ end }}
+                  key: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.secretKeys.userPasswordKey | default "password" }}{{ else }}postgresPassword{{ end }}
             - name: DB_USER
               value: {{ .Values.postgresql.auth.username }}
         {{- end }}  

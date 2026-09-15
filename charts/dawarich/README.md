@@ -15,7 +15,7 @@ Self-hosted alternative to Google Location History
 |----|----------|
 | <https://dandydeveloper.github.io/charts> | redis-ha |
 
-Additionally, you have to supply your own postgresql, for example by using https://cloudnative-pg.io .
+The chart deploys a PostGIS-backed PostgreSQL instance by default. To use an external PostgreSQL/PostGIS instance instead, set `postgresql.enabled=false` and provide the external connection details.
 
 ## Installing the Chart
 
