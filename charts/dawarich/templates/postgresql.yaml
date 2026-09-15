@@ -122,6 +122,8 @@ spec:
             exec:
               command:
                 {{- include "dawarich.postgresqlProbeCommand" . | nindent 16 }}
+            periodSeconds: 10
+            failureThreshold: 6
           startupProbe:
             exec:
               command:
@@ -132,6 +134,8 @@ spec:
             exec:
               command:
                 {{- include "dawarich.postgresqlProbeCommand" . | nindent 16 }}
+            periodSeconds: 10
+            failureThreshold: 6
           volumeMounts:
             - name: postgresql-data
               mountPath: /var/lib/postgresql/data
