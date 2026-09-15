@@ -119,11 +119,19 @@ spec:
               containerPort: {{ .Values.postgresql.port }}
               protocol: TCP
           readinessProbe:
-            {{- include "dawarich.postgresqlProbe" . | nindent 12 }}
+            exec:
+              command:
+                {{- include "dawarich.postgresqlProbeCommand" . | nindent 16 }}
           startupProbe:
-            {{- include "dawarich.postgresqlProbe" . | nindent 12 }}
+            exec:
+              command:
+                {{- include "dawarich.postgresqlProbeCommand" . | nindent 16 }}
+            periodSeconds: 10
+            failureThreshold: 30
           livenessProbe:
-            {{- include "dawarich.postgresqlProbe" . | nindent 12 }}
+            exec:
+              command:
+                {{- include "dawarich.postgresqlProbeCommand" . | nindent 16 }}
           volumeMounts:
             - name: postgresql-data
               mountPath: /var/lib/postgresql/data
