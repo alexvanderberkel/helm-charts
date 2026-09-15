@@ -197,7 +197,7 @@ Create the name of the service account to use
     secretKeyRef:
       {{- if .auth.existingSecret }}
       name: {{ .auth.existingSecret }}
-      key: password
+      key: {{ .auth.secretKeys.userPasswordKey | default "password" }}
       {{- else }}
       name: {{ include "dawarich.fullname" $ }}
       key: postgresPassword
@@ -294,13 +294,34 @@ Create the name of the service account to use
 
 {{- define "dawarich.initContainers" }}
 - name: wait-for-postgres
-  image: busybox
+  image: "{{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}"
   env:
     - name: DATABASE_HOST
       value: "{{ include "dawarich.postgresqlHost" . }}"
     - name: DATABASE_PORT
       value: "{{ .Values.postgresql.port }}"
-  command: ['sh', '-c', 'until nc -z "$DATABASE_HOST" "$DATABASE_PORT"; do echo waiting for postgres; sleep 2; done;']
+    - name: DATABASE_NAME
+      value: "{{ .Values.postgresql.auth.database }}"
+    - name: DATABASE_USERNAME
+      {{- if .Values.postgresql.auth.existingSecret }}
+      valueFrom:
+        secretKeyRef:
+          name: {{ .Values.postgresql.auth.existingSecret }}
+          key: {{ .Values.postgresql.auth.secretKeys.usernameKey | default "username" }}
+      {{- else }}
+      value: "{{ .Values.postgresql.auth.username }}"
+      {{- end }}
+    - name: DATABASE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          {{- if .Values.postgresql.auth.existingSecret }}
+          name: {{ .Values.postgresql.auth.existingSecret }}
+          key: {{ .Values.postgresql.auth.secretKeys.userPasswordKey | default "password" }}
+          {{- else }}
+          name: {{ include "dawarich.fullname" . }}
+          key: postgresPassword
+          {{- end }}
+  command: ['sh', '-c', 'until PGPASSWORD="$DATABASE_PASSWORD" psql -h "$DATABASE_HOST" -p "$DATABASE_PORT" -U "$DATABASE_USERNAME" -d "$DATABASE_NAME" -c "SELECT 1" >/dev/null 2>&1; do echo waiting for postgres; sleep 2; done;']
 {{- end }}
 
 

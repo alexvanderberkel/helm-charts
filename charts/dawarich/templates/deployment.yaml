@@ -35,7 +35,7 @@ spec:
         {{ include "dawarich.initContainers" . | nindent 8 }}
         {{- if .Values.postgresql.enabled }}
         - name: postgis-init
-          image: bitnami/postgresql:latest
+          image: "{{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}"
           command:
             - /bin/sh
             - -c
@@ -46,14 +46,24 @@ spec:
             - name: PGHOST
               value: {{ include "dawarich.postgresqlHost" . | quote }}
             - name: PGUSER
-              value: {{ ternary "postgres" .Values.postgresql.adminUser .Values.postgresql.enabled | quote }}
+              {{- if .Values.postgresql.auth.existingSecret }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.auth.existingSecret }}
+                  key: {{ .Values.postgresql.auth.secretKeys.usernameKey | default "username" }}
+              {{- else }}
+              value: {{ .Values.postgresql.auth.username | quote }}
+              {{- end }}
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.existingSecret }}{{ else }}{{ include "dawarich.fullname" . }}{{ end }}
-                  key: {{ if .Values.postgresql.auth.existingSecret }}{{ .Values.postgresql.auth.secretKeys.adminPasswordKey | default "postgres-password" }}{{ else }}postgresAdminPassword{{ end }}
-            - name: DB_USER
-              value: {{ .Values.postgresql.auth.username }}
+                  {{- if .Values.postgresql.auth.existingSecret }}
+                  name: {{ .Values.postgresql.auth.existingSecret }}
+                  key: {{ .Values.postgresql.auth.secretKeys.userPasswordKey | default "password" }}
+                  {{- else }}
+                  name: {{ include "dawarich.fullname" . }}
+                  key: postgresPassword
+                  {{- end }}
         {{- end }}  
       containers:
         - name: {{ .Chart.Name }}
