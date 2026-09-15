@@ -158,7 +158,8 @@ persistence:
 
 postgresql:
   enabled: true
-  # External PostgreSQL/PostGIS host when postgresql.enabled=false.
+  # External PostgreSQL/PostGIS host. When set, the external host is used and
+  # the bundled PostgreSQL StatefulSet is not deployed.
   host: ""
   port: 5432
   # The bundled database is initialized only once per persistent volume.
@@ -177,6 +178,8 @@ postgresql:
 
   auth:
     database: dawarich
+    # When bundled PostgreSQL is used and this value is left as `changeme`,
+    # the chart will generate a random password and store it in the release secret.
     password: changeme
     username: dawarich
     existingSecret: null

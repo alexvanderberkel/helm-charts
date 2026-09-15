@@ -95,8 +95,18 @@ Create the name of the service account to use
 {{- printf "%s-postgresql" (include "dawarich.fullname" .) | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
+{{- define "dawarich.postgresqlBundledEnabled" -}}
+{{- if and .Values.postgresql.enabled (not .Values.postgresql.host) -}}
+true
+{{- else -}}
+false
+{{- end -}}
+{{- end }}
+
 {{- define "dawarich.postgresqlHost" -}}
-{{- if .Values.postgresql.enabled -}}
+{{- if .Values.postgresql.host -}}
+{{- .Values.postgresql.host -}}
+{{- else if .Values.postgresql.enabled -}}
 {{- include "dawarich.postgresqlName" . -}}
 {{- else -}}
 {{- required "postgresql.host is required when postgresql.enabled=false" .Values.postgresql.host -}}
