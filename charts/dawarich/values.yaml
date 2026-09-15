@@ -180,6 +180,7 @@ postgresql:
   auth:
     database: dawarich
     password: changeme
+    # When using existingSecret, this must match the username stored in that secret.
     username: dawarich
     postgresPassword: changeme
     existingSecret: null

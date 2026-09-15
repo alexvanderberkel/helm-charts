@@ -134,7 +134,7 @@ spec:
         - name: postgresql-init
           configMap:
             name: {{ include "dawarich.postgresqlName" . }}-init
-            defaultMode: 365
+            defaultMode: 365 # 0555
   {{- if and .Values.postgresql.persistence.enabled (not .Values.postgresql.persistence.existingClaim) }}
   volumeClaimTemplates:
     - metadata:
