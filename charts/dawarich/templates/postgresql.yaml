@@ -46,6 +46,11 @@ data:
     $$;
     SELECT format('GRANT ALL PRIVILEGES ON DATABASE %I TO %I', :'db_name', :'db_user') \gexec
     SELECT format('ALTER DATABASE %I OWNER TO %I', :'db_name', :'db_user') \gexec
+    EOSQL
+    psql -v ON_ERROR_STOP=1 \
+      --username "$POSTGRES_USER" \
+      --dbname "$POSTGRES_DB" \
+      --set=db_user="$DAWARICH_DATABASE_USER" <<'EOSQL'
     SELECT format('GRANT ALL ON SCHEMA public TO %I', :'db_user') \gexec
     SELECT format('ALTER SCHEMA public OWNER TO %I', :'db_user') \gexec
     EOSQL
