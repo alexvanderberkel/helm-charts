@@ -46,6 +46,8 @@ data:
     $$;
     SELECT format('GRANT ALL PRIVILEGES ON DATABASE %I TO %I', :'db_name', :'db_user') \gexec
     SELECT format('ALTER DATABASE %I OWNER TO %I', :'db_name', :'db_user') \gexec
+    SELECT format('GRANT ALL ON SCHEMA public TO %I', :'db_user') \gexec
+    SELECT format('ALTER SCHEMA public OWNER TO %I', :'db_user') \gexec
     EOSQL
 ---
 apiVersion: apps/v1

@@ -46,7 +46,7 @@ spec:
             - name: PGHOST
               value: {{ include "dawarich.postgresqlHost" . | quote }}
             - name: PGUSER
-              value: postgres
+              value: {{ ternary "postgres" .Values.postgresql.adminUser .Values.postgresql.enabled | quote }}
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:

@@ -184,7 +184,14 @@ Create the name of the service account to use
 - name: DATABASE_NAME
   value: "{{ .auth.database }}"
 - name: DATABASE_USERNAME
+  {{- if and (not $.Values.postgresql.enabled) .auth.existingSecret }}
+  valueFrom:
+    secretKeyRef:
+      name: {{ .auth.existingSecret }}
+      key: username
+  {{- else }}
   value: "{{ .auth.username }}"
+  {{- end }}
 - name: DATABASE_PASSWORD
   valueFrom:
     secretKeyRef:
