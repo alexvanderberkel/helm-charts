@@ -151,14 +151,14 @@ entries:
           url: https://github.com/alexvanderberkel/charts/tree/main/charts/gotify
     apiVersion: v2
     appVersion: 3.1.1
-    created: "2026-09-16T22:05:38.196563178Z"
+    created: "2026-09-16T22:06:30.453575022Z"
     dependencies:
     - name: common
       repository: https://bjw-s-labs.github.io/helm-charts
-      version: 5.1.0
+      version: 5.2.0
     description: A simple server for sending and receiving messages in real-time per
       WebSocket. (Includes a sleek web-ui)
-    digest: e7060fe503e6c31ac3c37d05af3641c92501f72ff2553ae07e0e525ca7af490d
+    digest: fbade99081efc438372a6686befc2e88ae51496949442607596f5497681c2951
     home: https://charts.esseling.photos/charts/gotify/
     icon: https://raw.githubusercontent.com/alexvanderberkel/helm-charts/refs/heads/main/charts/gotify/icon.svg
     keywords:
@@ -481,4 +481,4 @@ entries:
     urls:
     - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.34.10/redis-ha-4.34.10.tgz
     version: 4.34.10
-generated: "2026-09-16T22:05:38.191120314Z"
+generated: "2026-09-16T22:06:30.446334255Z"
