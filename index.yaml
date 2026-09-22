@@ -25,6 +25,27 @@ entries:
     version: 1.2.0
   dawarich:
   - apiVersion: v2
+    appVersion: 1.15.1
+    created: "2026-09-22T20:43:21.164832171Z"
+    dependencies:
+    - alias: redis
+      condition: redis.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.39.0
+    description: Self-hosted alternative to Google Location History.
+    digest: 7212ab31a093e6b50b51c62a73b76067a0840f9a4b41e52cf62814b3e7224c4e
+    maintainers:
+    - email: alex@alex-esseling.de
+      name: alexvanderberkel
+    name: dawarich
+    sources:
+    - https://dawarich.app
+    type: application
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/dawarich-2.3.22/dawarich-2.3.22.tgz
+    version: 2.3.22
+  - apiVersion: v2
     appVersion: 1.15.0
     created: "2026-09-21T18:37:07.676574518Z"
     dependencies:
@@ -172,14 +193,14 @@ entries:
           url: https://github.com/alexvanderberkel/charts/tree/main/charts/gotify
     apiVersion: v2
     appVersion: 3.1.1
-    created: "2026-09-16T22:06:30.453575022Z"
+    created: "2026-09-22T20:44:22.36253261Z"
     dependencies:
     - name: common
       repository: https://bjw-s-labs.github.io/helm-charts
-      version: 5.2.0
+      version: 5.2.1
     description: A simple server for sending and receiving messages in real-time per
       WebSocket. (Includes a sleek web-ui)
-    digest: fbade99081efc438372a6686befc2e88ae51496949442607596f5497681c2951
+    digest: 563f1b8d66a9da45258de8dc418b830a8b686e0e1ff6dd412cef2c3799606959
     home: https://charts.esseling.photos/charts/gotify/
     icon: https://raw.githubusercontent.com/alexvanderberkel/helm-charts/refs/heads/main/charts/gotify/icon.svg
     keywords:
@@ -412,10 +433,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 8.10.1
-    created: "2026-09-22T20:43:52.251433737Z"
+    created: "2026-09-07T20:26:36.353800731Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 009bfaf5d860a4017205260d0d57c01b931dd235a627431d7e06bbb6693cba7a
+    digest: 895348fe69275bd6ac54e07e4828e3f0d159dcda6f24526ad3cc0fa372ba70cb
     home: https://redis.io/
     icon: https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-shadow-tal-revivo.png
     keywords:
@@ -502,4 +523,4 @@ entries:
     urls:
     - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.34.10/redis-ha-4.34.10.tgz
     version: 4.34.10
-generated: "2026-09-22T20:43:52.24876715Z"
+generated: "2026-09-22T20:44:22.355427416Z"
