@@ -6,7 +6,8 @@ keywords:
 - keyvalue
 - database
 version: 4.37.0
-appVersion: 8.10.1
+# renovate datasource=docker depName=public.ecr.aws/docker/library/redis
+appVersion: 8.10.2
 description: This Helm chart provides a highly available Redis implementation with a master/slave configuration and uses Sentinel sidecars for failover management
 icon: https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-shadow-tal-revivo.png
 maintainers:

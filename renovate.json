@@ -13,12 +13,12 @@
   ],
   "packageRules": [
     {
-      "matchManagers": ["custom.regex"],
-      "matchFileNames": ["charts/**/Chart.yaml"],
+      "description": "Bump the chart version for any dependency update inside a chart directory (appVersion, values.yaml images, chart dependencies)",
+      "matchFileNames": ["charts/**"],
       "bumpVersions": [
         {
           "filePatterns": ["{{packageFileDir}}/Chart.yaml"],
-          "matchStrings": ["version:\\s(?<version>[^\\s]+)"],
+          "matchStrings": ["(?m)^version:\\s+(?<version>\\S+)"],
           "bumpType": "patch"
         }
       ]
