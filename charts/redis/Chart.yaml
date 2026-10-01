@@ -5,7 +5,7 @@ keywords:
 - redis
 - keyvalue
 - database
-version: 4.37.3
+version: 4.37.4
 # renovate datasource=docker depName=public.ecr.aws/docker/library/redis
 appVersion: 8.10.2
 description: This Helm chart provides a highly available Redis implementation with a master/slave configuration and uses Sentinel sidecars for failover management
