@@ -214,6 +214,42 @@ entries:
           url: https://github.com/alexvanderberkel/charts/tree/main/charts/gotify
     apiVersion: v2
     appVersion: 3.1.1
+    created: "2026-10-10T19:08:25.246056362Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 5.3.0
+    description: A simple server for sending and receiving messages in real-time per
+      WebSocket. (Includes a sleek web-ui)
+    digest: b54d3069b057184f54aca3eb38f467455fb665226b23f0323f44fe3920362659
+    home: https://charts.esseling.photos/charts/gotify/
+    icon: https://raw.githubusercontent.com/alexvanderberkel/helm-charts/refs/heads/main/charts/gotify/icon.svg
+    keywords:
+    - notifications
+    kubeVersion: '>=1.22.0-0'
+    maintainers:
+    - email: alex@alex-esseling.de
+      name: alexvanderberkel
+    name: gotify
+    sources:
+    - https://github.com/gotify/server
+    type: application
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/gotify-0.7.2/gotify-0.7.2.tgz
+    version: 0.7.2
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Update ghcr.io/gotify/server docker tag to v3.0.0
+        - kind: fixed
+          description: Use emptyDir volume for data directory to fix permission denied error with Gotify 3.0.0
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/gotify/server
+        - name: Chart Source
+          url: https://github.com/alexvanderberkel/charts/tree/main/charts/gotify
+    apiVersion: v2
+    appVersion: 3.1.1
     created: "2026-09-22T20:44:22.36253261Z"
     dependencies:
     - name: common
@@ -636,4 +672,4 @@ entries:
     urls:
     - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.34.10/redis-ha-4.34.10.tgz
     version: 4.34.10
-generated: "2026-10-01T22:04:24.112814051Z"
+generated: "2026-10-10T19:08:25.24089762Z"
