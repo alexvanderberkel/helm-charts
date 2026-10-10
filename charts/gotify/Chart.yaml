@@ -4,7 +4,7 @@ description: A simple server for sending and receiving messages in real-time per
 home: https://charts.esseling.photos/charts/gotify/
 icon: https://raw.githubusercontent.com/alexvanderberkel/helm-charts/refs/heads/main/charts/gotify/icon.svg
 type: application
-version: 0.7.1
+version: 0.7.2
 # renovate datasource=docker depName=ghcr.io/gotify/server
 appVersion: 3.1.1
 kubeVersion: ">=1.22.0-0"
@@ -13,7 +13,7 @@ keywords:
 dependencies:
   - name: common
     repository: https://bjw-s-labs.github.io/helm-charts
-    version: 5.2.1
+    version: 5.3.0
 sources:
   - https://github.com/gotify/server
 maintainers:
