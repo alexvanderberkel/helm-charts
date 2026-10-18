@@ -25,6 +25,27 @@ entries:
     version: 1.2.0
   dawarich:
   - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2026-10-18T07:43:47.710385758Z"
+    dependencies:
+    - alias: redis
+      condition: redis.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.39.0
+    description: Self-hosted alternative to Google Location History.
+    digest: a9b3d9e60fd7de314f8c6cbde0d87c7d3a9b880c1a51226eed3704d0ead242c5
+    maintainers:
+    - email: alex@alex-esseling.de
+      name: alexvanderberkel
+    name: dawarich
+    sources:
+    - https://dawarich.app
+    type: application
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/dawarich-2.3.25/dawarich-2.3.25.tgz
+    version: 2.3.25
+  - apiVersion: v2
     appVersion: 1.15.3
     created: "2026-10-01T21:43:02.432867154Z"
     dependencies:
@@ -695,4 +716,4 @@ entries:
     urls:
     - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.34.10/redis-ha-4.34.10.tgz
     version: 4.34.10
-generated: "2026-10-16T07:28:21.143832074Z"
+generated: "2026-10-18T07:43:47.708005765Z"
