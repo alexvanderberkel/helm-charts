@@ -2,6 +2,10 @@
 ## Testing if muti-valued config is working or not
 ## Configured for single-node Kind cluster in CI
 
+# Avoid ECR Public rate limits on shared CI runners.
+image:
+  repository: docker.io/library/redis
+
 # Reduce replicas for single-node cluster
 replicas: 1
 
