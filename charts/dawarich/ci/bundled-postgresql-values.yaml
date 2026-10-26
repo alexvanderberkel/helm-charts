@@ -2,7 +2,3 @@ postgresql:
   enabled: true
   auth:
     password: ci-password
-
-redis:
-  image:
-    repository: docker.io/library/redis
