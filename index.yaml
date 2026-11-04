@@ -25,27 +25,6 @@ entries:
     version: 1.2.0
   dawarich:
   - apiVersion: v2
-    appVersion: 1.21.0
-    created: "2026-11-04T20:51:15.746552406Z"
-    dependencies:
-    - alias: redis
-      condition: redis.enabled
-      name: redis-ha
-      repository: https://dandydeveloper.github.io/charts
-      version: 4.39.0
-    description: Self-hosted alternative to Google Location History.
-    digest: c40a83ee3d6ecc28ce452df5897f94ed5c1a18562528e15946ed299437fe1c3b
-    maintainers:
-    - email: alex@alex-esseling.de
-      name: alexvanderberkel
-    name: dawarich
-    sources:
-    - https://dawarich.app
-    type: application
-    urls:
-    - https://github.com/alexvanderberkel/helm-charts/releases/download/dawarich-2.3.29/dawarich-2.3.29.tgz
-    version: 2.3.29
-  - apiVersion: v2
     appVersion: 1.20.1
     created: "2026-11-02T20:58:53.944988659Z"
     dependencies:
@@ -595,6 +574,29 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 8.10.3
+    created: "2026-11-04T20:52:02.084517765Z"
+    description: This Helm chart provides a highly available Redis implementation
+      with a master/slave configuration and uses Sentinel sidecars for failover management
+    digest: 519e584d149c0ce79c686b357403df5a2889eda589b90b5ada1ec8cb0f85acc6
+    home: https://redis.io/
+    icon: https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-shadow-tal-revivo.png
+    keywords:
+    - redis
+    - keyvalue
+    - database
+    maintainers:
+    - email: alex@alex-esseling.de
+      name: alexvanderberkel
+    name: redis-ha
+    sources:
+    - https://redis.io/download
+    - https://github.com/alexvanderberkel/charts/blob/master/charts/redis-ha
+    - https://github.com/oliver006/redis_exporter
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.37.9/redis-ha-4.37.9.tgz
+    version: 4.37.9
+  - apiVersion: v2
+    appVersion: 8.10.3
     created: "2026-10-29T21:08:22.281213608Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
@@ -869,4 +871,4 @@ entries:
     urls:
     - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.34.10/redis-ha-4.34.10.tgz
     version: 4.34.10
-generated: "2026-11-04T20:51:15.742656026Z"
+generated: "2026-11-04T20:52:02.081972567Z"
