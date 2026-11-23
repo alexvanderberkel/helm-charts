@@ -595,10 +595,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 8.10.3
-    created: "2026-11-23T07:59:26.377042288Z"
+    created: "2026-11-23T07:59:49.544235596Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: 7c02b46ea4ec858d4c194e6eb35b8df546eb66344f7fce5e4c71d52269a1c96d
+    digest: fbf020fcff3135a844138b9a44d061220ac688ae3e8d99189f50ccd9acee5317
     home: https://redis.io/
     icon: https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-shadow-tal-revivo.png
     keywords:
@@ -915,4 +915,4 @@ entries:
     urls:
     - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.34.10/redis-ha-4.34.10.tgz
     version: 4.34.10
-generated: "2026-11-23T07:59:26.374980746Z"
+generated: "2026-11-23T07:59:49.5390187Z"
