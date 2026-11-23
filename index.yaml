@@ -25,6 +25,27 @@ entries:
     version: 1.2.0
   dawarich:
   - apiVersion: v2
+    appVersion: 1.23.0
+    created: "2026-11-23T08:00:18.925219941Z"
+    dependencies:
+    - alias: redis
+      condition: redis.enabled
+      name: redis-ha
+      repository: https://dandydeveloper.github.io/charts
+      version: 4.39.0
+    description: Self-hosted alternative to Google Location History.
+    digest: cb141902f74060347cf3f9d04c3f974c8ff2c05fe9b7690a8bdd8f771b7edc0f
+    maintainers:
+    - email: alex@alex-esseling.de
+      name: alexvanderberkel
+    name: dawarich
+    sources:
+    - https://dawarich.app
+    type: application
+    urls:
+    - https://github.com/alexvanderberkel/helm-charts/releases/download/dawarich-2.3.31/dawarich-2.3.31.tgz
+    version: 2.3.31
+  - apiVersion: v2
     appVersion: 1.22.0
     created: "2026-11-08T21:57:24.803445243Z"
     dependencies:
@@ -595,10 +616,10 @@ entries:
   redis-ha:
   - apiVersion: v2
     appVersion: 8.10.3
-    created: "2026-11-23T07:59:49.544235596Z"
+    created: "2026-11-23T07:59:26.377042288Z"
     description: This Helm chart provides a highly available Redis implementation
       with a master/slave configuration and uses Sentinel sidecars for failover management
-    digest: fbf020fcff3135a844138b9a44d061220ac688ae3e8d99189f50ccd9acee5317
+    digest: 7c02b46ea4ec858d4c194e6eb35b8df546eb66344f7fce5e4c71d52269a1c96d
     home: https://redis.io/
     icon: https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-redis-an-in-memory-data-structure-project-implementing-a-distributed-logo-shadow-tal-revivo.png
     keywords:
@@ -915,4 +936,4 @@ entries:
     urls:
     - https://github.com/alexvanderberkel/helm-charts/releases/download/redis-ha-4.34.10/redis-ha-4.34.10.tgz
     version: 4.34.10
-generated: "2026-11-23T07:59:49.5390187Z"
+generated: "2026-11-23T08:00:18.92148541Z"
